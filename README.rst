@@ -22,10 +22,9 @@ Motivation
 -  Static error detection (see
    `SPARK-20631 <https://issues.apache.org/jira/browse/SPARK-20631>`__)
 
-.. figure:: https://i.imgur.com/GfDCGjv.gif
-   :alt: SPARK-20631
+   |SPARK-20631|
 
-   SPARK-20631
+
 
 -  Improved completion for chained method calls.
 
@@ -263,11 +262,14 @@ API Coverage
 Disclaimer
 ----------
 
-Apache Spark, Spark, Apache, and the Spark logo are trademarks of The
-Apache Software Foundation. This project is not owned, endorsed, or
+
+Apache Spark, Spark, Apache, and the Spark logo are `trademarks <https://www.apache.org/foundation/marks/>`__ of `The
+Apache Software Foundation <http://www.apache.org/>`__. This project is not owned, endorsed, or
 sponsored by The Apache Software Foundation.
 
 .. |Build Status| image:: https://travis-ci.org/zero323/pyspark-stubs.svg?branch=master
    :target: https://travis-ci.org/zero323/pyspark-stubs
 .. |PyPI version| image:: https://badge.fury.io/py/pyspark-stubs.svg
    :target: https://badge.fury.io/py/pyspark-stubs
+.. |SPARK-20631| image:: https://i.imgur.com/GfDCGjv.gif
+     :alt: SPARK-20631
