@@ -3,6 +3,10 @@
 
 from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple, TypeVar, Union
 from typing import overload
+
+import pandas.core.frame # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore
+
 from pyspark.sql._typing import ColumnOrName, Literal, LiteralType
 from pyspark.sql.types import *
 from pyspark.sql.context import SQLContext
