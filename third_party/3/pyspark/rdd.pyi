@@ -12,7 +12,7 @@ from pyspark.serializers import Serializer
 from pyspark.storagelevel import StorageLevel
 from pyspark.statcounter import StatCounter
 from pyspark.sql.dataframe import DataFrame
-from pyspark.sql._typing import Literal, DecimalLiteral, DateTimeLiteral
+from pyspark.sql._typing import LiteralType, DecimalLiteral, DateTimeLiteral
 from py4j.java_gateway import JavaObject  # type: ignore
 
 
@@ -183,7 +183,7 @@ class RDD(Generic[T]):
     def countApproxDistinct(self, relativeSD: float = ...) -> int: ...
     def toLocalIterator(self) -> Iterator[T]: ...
     def barrier(self: RDD[T]) -> RDDBarrier[T]: ...
-    def toDF(self: RDD[Tuple]) -> DataFrame: ...
+    def toDF(self: RDD[Union[Tuple, List]]) -> DataFrame: ...
 
 class RDDBarrier(Generic[T]):
     rdd = ...  # type: RDD[T]
