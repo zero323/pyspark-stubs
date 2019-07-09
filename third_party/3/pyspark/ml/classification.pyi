@@ -2,6 +2,7 @@
 #
 
 from typing import Any, Dict, List, Optional
+from pyspark.ml._typing import ParamMap
 from pyspark.ml.base import Estimator, Model, Transformer
 from pyspark.ml.linalg import Matrix, Vector
 from pyspark.ml.param.shared import *
@@ -10,8 +11,6 @@ from pyspark.ml.util import *
 from pyspark.ml.wrapper import JavaEstimator, JavaModel
 from pyspark.ml.wrapper import JavaWrapper
 from pyspark.sql.dataframe import DataFrame
-
-ParamMap = Dict[Param, Any]
 
 class JavaClassificationModel(JavaPredictionModel):
     @property

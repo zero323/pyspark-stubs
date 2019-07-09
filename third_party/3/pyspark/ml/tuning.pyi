@@ -3,13 +3,12 @@
 
 from typing import overload
 from typing import Any, Dict, List, Optional, Tuple, Type
+from pyspark.ml._typing import ParamMap
 from pyspark.ml import Estimator, Model
 from pyspark.ml.evaluation import Evaluator
 from pyspark.ml.param import Param
 from pyspark.ml.param.shared import *
 from pyspark.ml.util import *
-
-ParamMap = Dict[Param, Any]
 
 class ParamGridBuilder:
     def __init__(self) -> None: ...
