@@ -13,4 +13,6 @@ install:
   - pip install .
   - pip install -r requirements-tests-py3.txt
 
-script: ./tests/mypy_test.py
+script:
+  - ./tests/mypy_test.py
+  - MYPY_TEST_PREFIX=$PWD MYPYPATH=$PWD/third_party/3 pytest
