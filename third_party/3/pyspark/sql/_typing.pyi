@@ -8,3 +8,4 @@ Literal = Union[bool, int, float, str]
 DecimalLiteral = decimal.Decimal
 DateTimeLiteral = Union[datetime.datetime, datetime.date]
 LiteralType = TypeVar('LiteralType', bool, int, float, str)
+DataTypeOrString = Union[pyspark.sql.types.DataType, str]
