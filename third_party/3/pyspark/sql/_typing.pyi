@@ -1,5 +1,7 @@
 from typing import Any, Iterable, List, NewType, Optional, Tuple, TypeVar, Union
 from typing_extensions import Protocol, Literal
+from types import FunctionType
+
 import datetime
 import decimal
 
@@ -58,3 +60,5 @@ class PandasMapIterFunction(Protocol):
 class UserDefinedFunctionLike(Protocol):
     def __call__(self, *_: ColumnOrName) -> Column:
         ...
+
+PandasMapIterUserDefinedFunctionLike = NewType("PandasMapIterUserDefinedFunctionLike", FunctionType)
