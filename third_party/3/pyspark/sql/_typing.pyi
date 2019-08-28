@@ -61,4 +61,4 @@ class UserDefinedFunctionLike(Protocol):
     def __call__(self, *_: ColumnOrName) -> Column:
         ...
 
-PandasMapIterUserDefinedFunctionLike = NewType("PandasMapIterUserDefinedFunctionLike", FunctionType)
+MapIterPandasUserDefinedFunction = NewType("MapIterPandasUserDefinedFunction", FunctionType)
