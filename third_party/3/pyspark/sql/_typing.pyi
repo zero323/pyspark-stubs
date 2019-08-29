@@ -1,4 +1,4 @@
-from typing import Any, List, NewType, Optional, TypeVar, Union
+from typing import Any, Callable, Iterable, List, NewType, Optional, Tuple, TypeVar, Union
 from typing_extensions import Protocol, Literal
 from types import FunctionType
 
@@ -37,17 +37,19 @@ PandasGroupedMapUDFType = Literal[201]
 PandasGroupedAggUDFType = Literal[202]
 PandasMapIterUDFType = Literal[205]
 
-class PandasScalarFunction(Protocol):
+class PandasVariadicScalarFunction(Protocol):
     def __call__(self, *_: pandas.core.series.Series) -> pandas.core.series.Series:
         ...
 
-class PandasGroupedMapFunction(Protocol):
-    def __call__(self, _: pandas.core.frame.DataFrame) -> pandas.core.frame.DataFrame:
-        ...
+PandasScalarFunction = Union[Callable[[pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], pandas.core.series.Series], PandasVariadicScalarFunction]
 
-class PandasGroupedAggFunction(Protocol):
+PandasGroupedMapFunction = Callable[[pandas.core.frame.DataFrame], pandas.core.frame.DataFrame]
+
+class PandasVariadicGroupedAggFunction(Protocol):
     def __call__(self, *_: pandas.core.series.Series) -> LiteralType:
         ...
+
+PandasGroupedAggFunction = Union[Callable[[pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], Callable[[pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series, pandas.core.series.Series], LiteralType], PandasVariadicGroupedAggFunction]
 
 class UserDefinedFunctionLike(Protocol):
     def __call__(self, *_: ColumnOrName) -> Column:
