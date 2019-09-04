@@ -59,10 +59,10 @@ class RidgeRegressionWithSGD:
     @classmethod
     def train(cls, data: RDD[LabeledPoint], iterations: int = ..., step: float = ..., regParam: float = ..., miniBatchFraction: float = ..., initialWeights: Optional[VectorLike] = ..., intercept: bool = ..., validateData: bool = ..., convergenceTol: float = ...) -> RidgeRegressionModel: ...
 
-class IsotonicRegressionModel(Saveable, Loader):
-    boundaries = ...  # type: ndarray
-    predictions = ...  # type: ndarray
-    isotonic = ...  # type: bool
+class IsotonicRegressionModel(Saveable, Loader[IsotonicRegressionModel]):
+    boundaries: ndarray
+    predictions: ndarray
+    isotonic: bool
     def __init__(self, boundaries: ndarray, predictions: ndarray, isotonic: bool) -> None: ...
     @overload
     def predict(self, x: Vector) -> ndarray: ...

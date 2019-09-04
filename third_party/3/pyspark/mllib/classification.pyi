@@ -59,10 +59,10 @@ class SVMWithSGD:
     @classmethod
     def train(cls, data: RDD[LabeledPoint], iterations: int = ..., step: float = ..., regParam: float = ..., miniBatchFraction: float = ..., initialWeights: Optional[VectorLike] = ..., regType: str = ..., intercept: bool = ..., validateData: bool = ..., convergenceTol: float = ...) -> SVMModel: ...
 
-class NaiveBayesModel(Saveable, Loader):
-    labels = ...  # type: ndarray
-    pi = ...  # type: ndarray
-    theta = ...  # type: ndarray
+class NaiveBayesModel(Saveable, Loader[NaiveBayesModel]):
+    labels: ndarray
+    pi: ndarray
+    theta: ndarray
     def __init__(self, labels, pi, theta) -> None: ...
     @overload
     def predict(self, x: VectorLike) -> float64:...
