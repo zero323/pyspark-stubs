@@ -34,6 +34,7 @@ class SupportsClose(Protocol):
 PandasScalarUDFType = Literal[200]
 PandasScalarIterUDFType = Literal[204]
 PandasGroupedMapUDFType = Literal[201]
+PandasCogroupedMapUDFType = Literal[206]
 PandasGroupedAggUDFType = Literal[202]
 PandasMapIterUDFType = Literal[205]
 
