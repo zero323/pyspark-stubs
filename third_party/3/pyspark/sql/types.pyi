@@ -2,7 +2,9 @@
 #
 
 from typing import overload
-from typing import Any, Callable, Dict, Iterator, List, Optional, Union, Tuple, TypeVar
+from typing import Any, Callable, Dict, Iterator, List, Optional, Union, Tuple, Type, TypeVar
+
+import abc
 import datetime
 
 T = TypeVar('T')
@@ -25,34 +27,34 @@ class DataTypeSingleton(type):
     def __call__(cls): ...
 
 class NullType(DataType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class AtomicType(DataType): ...
 class NumericType(AtomicType): ...
 
 class IntegralType(NumericType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class FractionalType(NumericType): ...
 
 class StringType(AtomicType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class BinaryType(AtomicType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class BooleanType(AtomicType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class DateType(AtomicType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
     EPOCH_ORDINAL: int
     def needConversion(self) -> bool: ...
     def toInternal(self, d: datetime.date) -> int: ...
     def fromInternal(self, v: int) -> datetime.date: ...
 
 class TimestampType(AtomicType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
     def needConversion(self) -> bool: ...
     def toInternal(self, dt: datetime.datetime) -> int: ...
     def fromInternal(self, ts: int) -> datetime.datetime: ...
@@ -66,10 +68,10 @@ class DecimalType(FractionalType):
     def jsonValue(self) -> str: ...
 
 class DoubleType(FractionalType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class FloatType(FractionalType):
-    __metaclass__: type
+    __metaclass__: Type[abc.ABCMeta]
 
 class ByteType(IntegralType):
     def simpleString(self) -> str: ...
