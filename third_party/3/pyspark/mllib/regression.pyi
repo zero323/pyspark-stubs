@@ -14,8 +14,8 @@ from numpy import ndarray  # type: ignore
 K = TypeVar('K')
 
 class LabeledPoint:
-    label = ...  # type: int
-    features = ...  # type: Vector
+    label: int
+    features: Vector
     def __init__(self, label: float, features: Iterable[float]) -> None: ...
     def __reduce__(self) -> Tuple[type, Tuple[bytes]]: ...
 
@@ -83,10 +83,10 @@ class StreamingLinearAlgorithm:
     def predictOnValues(self, dstream: DStream[Tuple[K, VectorLike]]) -> DStream[Tuple[K, float]]: ...
 
 class StreamingLinearRegressionWithSGD(StreamingLinearAlgorithm):
-    stepSize = ...  # type: float
-    numIterations = ...  # type: int
-    miniBatchFraction = ...  # type: float
-    convergenceTol = ...  # type: float
+    stepSize: float
+    numIterations: int
+    miniBatchFraction: float
+    convergenceTol: float
     def __init__(self, stepSize: float = ..., numIterations: int = ..., miniBatchFraction: float = ..., convergenceTol: float = ...) -> None: ...
     def setInitialWeights(self, initialWeights: VectorLike) -> 'StreamingLinearRegressionWithSGD': ...
     def trainOn(self, dstream: DStream[LabeledPoint]) -> None: ...

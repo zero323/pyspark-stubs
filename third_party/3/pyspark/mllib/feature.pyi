@@ -19,7 +19,7 @@ class VectorTransformer:
     def transform(self, vector: RDD[VectorLike]) -> RDD[Vector]: ...
 
 class Normalizer(VectorTransformer):
-    p = ...  # type: float
+    p: float
     def __init__(self, p: float = ...) -> None: ...
     @overload
     def transform(self, vector: VectorLike) -> Vector: ...
@@ -49,8 +49,8 @@ class StandardScalerModel(JavaVectorTransformer):
     def mean(self) -> Vector: ...
 
 class StandardScaler:
-    withMean = ...  # type: bool
-    withStd = ...  # type: bool
+    withMean: bool
+    withStd: bool
     def __init__(self, withMean: bool = ..., withStd: bool = ...) -> None: ...
     def fit(self, dataset: RDD[VectorLike]) -> StandardScalerModel: ...
 
@@ -61,12 +61,12 @@ class ChiSqSelectorModel(JavaVectorTransformer):
     def transform(self, vector: RDD[VectorLike]) -> RDD[Vector]: ...
 
 class ChiSqSelector:
-    numTopFeatures = ...  # type: int
-    selectorType = ...  # type: str
-    percentile = ...  # type: float
-    fpr = ...  # type: float
-    fdr = ...  # type: float
-    fwe = ...  # type: float
+    numTopFeatures: int
+    selectorType: str
+    percentile: float
+    fpr: float
+    fdr: float
+    fwe: float
     def __init__(self, numTopFeatures: int = ..., selectorType: str = ..., percentile: float = ..., fpr: float = ..., fdr: float = ..., fwe: float = ...) -> None: ...
     def setNumTopFeatures(self, numTopFeatures: int) -> 'ChiSqSelector': ...
     def setPercentile(self, percentile: float) -> 'ChiSqSelector': ...
@@ -79,13 +79,13 @@ class ChiSqSelector:
 class PCAModel(JavaVectorTransformer): ...
 
 class PCA:
-    k = ...  # type: int
+    k: int
     def __init__(self, k: int) -> None: ...
     def fit(self, data: RDD[VectorLike]) -> PCAModel: ...
 
 class HashingTF:
-    numFeatures = ...  # type: int
-    binary = ...  # type: bool
+    numFeatures: int
+    binary: bool
     def __init__(self, numFeatures: int = ...) -> None: ...
     def setBinary(self, value: bool) -> HashingTF: ...
     def indexOf(self, term: Hashable) -> int: ...
@@ -102,7 +102,7 @@ class IDFModel(JavaVectorTransformer):
     def idf(self) -> Vector: ...
 
 class IDF:
-    minDocFreq = ...  # type: int
+    minDocFreq: int
     def __init__(self, minDocFreq: int = ...) -> None: ...
     def fit(self, dataset: RDD[VectorLike]) -> IDFModel: ...
 
@@ -114,13 +114,13 @@ class Word2VecModel(JavaVectorTransformer, JavaSaveable, JavaLoader[Word2VecMode
     def load(cls, sc: SparkContext, path: str) -> Word2VecModel: ...
 
 class Word2Vec:
-    vectorSize = ...  # type: int
-    learningRate = ...  # type: float
-    numPartitions = ...  # type: int
-    numIterations = ...  # type: int
-    seed = ...  # type: int
-    minCount = ...  # type: int
-    windowSize = ...  # type: int
+    vectorSize: int
+    learningRate: float
+    numPartitions: int
+    numIterations: int
+    seed: int
+    minCount: int
+    windowSize: int
     def __init__(self) -> None: ...
     def setVectorSize(self, vectorSize: int) -> 'Word2Vec': ...
     def setLearningRate(self, learningRate: float) -> 'Word2Vec': ...
@@ -132,7 +132,7 @@ class Word2Vec:
     def fit(self, data: RDD[List[str]]) -> Word2VecModel: ...
 
 class ElementwiseProduct(VectorTransformer):
-    scalingVector = ...  # type: Vector
+    scalingVector: Vector
     def __init__(self, scalingVector: Vector) -> None: ...
     @overload
     def transform(self, vector: VectorLike) -> Vector: ...

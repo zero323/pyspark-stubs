@@ -20,7 +20,7 @@ from pyspark.sql.streaming import DataStreamReader, StreamingQueryManager
 T = TypeVar('T')
 
 class SQLContext:
-    sparkSession = ...  # type: SparkSession
+    sparkSession: SparkSession
     def __init__(self, sparkContext, sparkSession: Optional[SparkSession] = ..., jsqlContext: Optional[JavaObject] = ...) -> None: ...
     @classmethod
     def getOrCreate(cls: type, sc: SparkContext) -> SQLContext:...

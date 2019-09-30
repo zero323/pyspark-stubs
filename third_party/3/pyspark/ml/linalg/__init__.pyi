@@ -30,11 +30,11 @@ class MatrixUDT(UserDefinedType):
     def simpleString(self) -> str: ...
 
 class Vector:
-    __UDT__ = ...  # type: VectorUDT
+    __UDT__: VectorUDT
     def toArray(self) -> ndarray: ...
 
 class DenseVector(Vector):
-    array = ...  # type: ndarray
+    array: ndarray
     @overload
     def __init__(self, *elements: float) -> None: ...
     @overload
@@ -72,9 +72,9 @@ class DenseVector(Vector):
     def __rmod__(self, other: Union[float, Iterable[float]]) -> DenseVector: ...
 
 class SparseVector(Vector):
-    size = ...  # type: int
-    indices = ...  # type: ndarray
-    values = ...  # type: ndarray
+    size: int
+    indices: ndarray
+    values: ndarray
     @overload
     def __init__(self, size: int, *args: Tuple[int, float]) -> None: ...
     @overload
@@ -136,15 +136,15 @@ class Vectors:
     def zeros(size: int) -> DenseVector: ...
 
 class Matrix:
-    __UDT__ = ...  # type: MatrixUDT
-    numRows = ...  # type: int
-    numCols = ...  # type: int
-    isTransposed = ...  # type: bool
+    __UDT__: MatrixUDT
+    numRows: int
+    numCols: int
+    isTransposed: bool
     def __init__(self, numRows: int, numCols: int, isTransposed: bool = ...) -> None: ...
     def toArray(self): ...
 
 class DenseMatrix(Matrix):
-    values = ...  # type: Any
+    values: Any
     @overload
     def __init__(self, numRows: int, numCols: int, values: bytes, isTransposed: bool = ...) -> None: ...
     @overload
@@ -156,9 +156,9 @@ class DenseMatrix(Matrix):
     def __eq__(self, other) -> bool: ...
 
 class SparseMatrix(Matrix):
-    colPtrs = ...  # type: ndarray
-    rowIndices = ...  # type: ndarray
-    values = ...  # type: ndarray
+    colPtrs: ndarray
+    rowIndices: ndarray
+    values: ndarray
     @overload
     def __init__(self, numRows: int, numCols: int, colPtrs: bytes, rowIndices: bytes, values: bytes, isTransposed: bool = ...) -> None: ...
     @overload
