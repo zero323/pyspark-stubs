@@ -5,6 +5,8 @@
 from typing import overload
 from typing import Any, Callable, Dict, Generic, List, Optional, Type, TypeVar
 
+import abc
+
 import pyspark.ml.util
 from pyspark.ml.linalg import DenseVector, Matrix
 
@@ -45,7 +47,7 @@ class TypeConverters:
     def toBoolean(value: Any) -> bool: ...
 
 class Params(pyspark.ml.util.Identifiable):
-    __metaclass__: Any
+    __metaclass__: Type[abc.ABCMeta]
     def __init__(self) -> None: ...
     @property
     def params(self) -> List[Param]: ...
