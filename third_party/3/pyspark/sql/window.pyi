@@ -6,9 +6,9 @@ from pyspark.sql._typing import ColumnOrName
 from py4j.java_gateway import JavaObject # type: ignore
 
 class Window:
-    unboundedPreceding = ...  # type: int
-    unboundedFollowing = ...  # type: int
-    currentRow = ...  # type: int
+    unboundedPreceding: int
+    unboundedFollowing: int
+    currentRow: int
     @staticmethod
     def partitionBy(*cols: ColumnOrName) -> WindowSpec: ...
     @staticmethod

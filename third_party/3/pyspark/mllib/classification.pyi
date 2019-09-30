@@ -77,11 +77,11 @@ class NaiveBayes:
     def train(cls, data: RDD[VectorLike], lambda_: float = ...) -> NaiveBayesModel: ...
 
 class StreamingLogisticRegressionWithSGD(StreamingLinearAlgorithm):
-    stepSize = ...  # type: float
-    numIterations = ...  # type: int
-    regParam = ...  # type: float
-    miniBatchFraction = ...  # type: float
-    convergenceTol = ...  # type: float
+    stepSize: float
+    numIterations: int
+    regParam: float
+    miniBatchFraction: float
+    convergenceTol: float
     def __init__(self, stepSize: float = ..., numIterations: int = ..., miniBatchFraction: float = ..., regParam: float = ..., convergenceTol: float = ...) -> None: ...
     def setInitialWeights(self, initialWeights: VectorLike) -> 'StreamingLogisticRegressionWithSGD': ...
     def trainOn(self, dstream: DStream[LabeledPoint]) -> None: ...

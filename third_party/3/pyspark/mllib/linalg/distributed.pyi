@@ -42,8 +42,8 @@ class SingularValueDecomposition(JavaModelWrapper, Generic[UT, VT]):
     def V(self) -> VT: ...
 
 class IndexedRow:
-    index = ...  # type: int
-    vector = ...  # type: VectorLike
+    index: int
+    vector: VectorLike
     def __init__(self, index: int, vector: VectorLike) -> None: ...
 
 class IndexedRowMatrix(DistributedMatrix):
@@ -61,9 +61,9 @@ class IndexedRowMatrix(DistributedMatrix):
     def multiply(self, matrix: Matrix) -> IndexedRowMatrix: ...
 
 class MatrixEntry:
-    i = ...  # type: int
-    j = ...  # type: int
-    value = ...  # type: float
+    i: int
+    j: int
+    value: float
     def __init__(self, i: int, j: int, value: float) -> None: ...
 
 class CoordinateMatrix(DistributedMatrix):

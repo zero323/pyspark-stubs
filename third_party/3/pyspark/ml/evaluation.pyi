@@ -10,12 +10,12 @@ from pyspark.ml.util import JavaMLReadable, JavaMLWritable
 ParamMap = Dict[Param, Any]
 
 class Evaluator(Params):
-    __metaclass__ = ...  # type: Any
+    __metaclass__: Any
     def evaluate(self, dataset, params: Optional[ParamMap] = ...) -> float: ...
     def isLargerBetter(self) -> bool: ...
 
 class JavaEvaluator(JavaParams, Evaluator):
-    __metaclass__ = ...  # type: Any
+    __metaclass__: Any
     def isLargerBetter(self) -> bool: ...
 
 class BinaryClassificationEvaluator(JavaEvaluator, HasLabelCol, HasRawPredictionCol, JavaMLReadable[BinaryClassificationEvaluator], JavaMLWritable):

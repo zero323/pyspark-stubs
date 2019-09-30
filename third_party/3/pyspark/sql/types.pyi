@@ -25,51 +25,51 @@ class DataTypeSingleton(type):
     def __call__(cls): ...
 
 class NullType(DataType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class AtomicType(DataType): ...
 class NumericType(AtomicType): ...
 
 class IntegralType(NumericType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class FractionalType(NumericType): ...
 
 class StringType(AtomicType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class BinaryType(AtomicType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class BooleanType(AtomicType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class DateType(AtomicType):
-    __metaclass__ = ...  # type: type
-    EPOCH_ORDINAL = ...  # type: int
+    __metaclass__: type
+    EPOCH_ORDINAL: int
     def needConversion(self) -> bool: ...
     def toInternal(self, d: datetime.date) -> int: ...
     def fromInternal(self, v: int) -> datetime.date: ...
 
 class TimestampType(AtomicType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
     def needConversion(self) -> bool: ...
     def toInternal(self, dt: datetime.datetime) -> int: ...
     def fromInternal(self, ts: int) -> datetime.datetime: ...
 
 class DecimalType(FractionalType):
-    precision = ...  # type: int
-    scale = ...  # type: int
-    hasPrecisionInfo = ...  # type: bool
+    precision: int
+    scale: int
+    hasPrecisionInfo: bool
     def __init__(self, precision: int = ..., scale: int = ...) -> None: ...
     def simpleString(self) -> str: ...
     def jsonValue(self) -> str: ...
 
 class DoubleType(FractionalType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class FloatType(FractionalType):
-    __metaclass__ = ...  # type: type
+    __metaclass__: type
 
 class ByteType(IntegralType):
     def simpleString(self) -> str: ...
@@ -84,8 +84,8 @@ class ShortType(IntegralType):
     def simpleString(self) -> str: ...
 
 class ArrayType(DataType):
-    elementType = ...  # type: DataType
-    containsNull = ...  # type: bool
+    elementType: DataType
+    containsNull: bool
     def __init__(self, elementType=DataType, containsNull: bool = ...) -> None: ...
     def simpleString(self): ...
     def jsonValue(self) -> Dict[str, Any]: ...
@@ -96,9 +96,9 @@ class ArrayType(DataType):
     def fromInternal(self, obj: List[Optional[T]]) -> List[Optional[T]]: ...
 
 class MapType(DataType):
-    keyType = ...  # type: DataType
-    valueType = ...  # type: DataType
-    valueContainsNull = ...  # type: bool
+    keyType: DataType
+    valueType: DataType
+    valueContainsNull: bool
     def __init__(self, keyType: DataType, valueType: DataType, valueContainsNull: bool = ...) -> None: ...
     def simpleString(self) -> str: ...
     def jsonValue(self) -> Dict[str, Any]: ...
@@ -109,10 +109,10 @@ class MapType(DataType):
     def fromInternal(self, obj: Dict[T, Optional[U]]) -> Dict[T, Optional[U]]: ...
 
 class StructField(DataType):
-    name = ...  # type: str
-    dataType = ...  # type: DataType
-    nullable = ...  # type: bool
-    metadata = ...  # type: Dict[str, Any]
+    name: str
+    dataType: DataType
+    nullable: bool
+    metadata: Dict[str, Any]
     def __init__(self, name: str, dataType: DataType, nullable: bool = ..., metadata: Optional[Dict[str, Any]] = ...) -> None: ...
     def simpleString(self) -> str: ...
     def jsonValue(self) -> Dict[str, Any]: ...
@@ -123,8 +123,8 @@ class StructField(DataType):
     def fromInternal(self, obj: T) -> T: ...
 
 class StructType(DataType):
-    fields = ...  # type: List[StructField]
-    names = ...  # type: List[str]
+    fields: List[StructField]
+    names: List[str]
     def __init__(self, fields: Optional[List[StructField]] = ...) -> None: ...
     @overload
     def add(self, field: str, data_type: Union[str, DataType], nullable: bool = ..., metadata: Optional[Dict[str, Any]] = ...) -> 'StructType': ...

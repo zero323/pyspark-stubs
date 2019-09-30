@@ -4,8 +4,8 @@
 
 from typing import Any
 
-long = ...  # type: Any
-unicode = ...  # type: Any
+long: Any
+unicode: Any
 
 def callJavaFunc(sc, func, *args): ...
 def inherit_doc(cls): ...
