@@ -74,10 +74,10 @@ class KafkaUtils:
     def createRDD(sc: SparkContext, kafkaParams: Dict[str, str], offsetRanges: List[int], leaders: Optional[Dict[TopicAndPartition, Broker]] = ..., keyDecoder: Callable[[bytes], T] = ..., valueDecoder: Callable[[bytes], U] = ...) -> RDD[Tuple[T, U]]: ...
 
 class OffsetRange:
-    topic = ...  # type: str
-    partition = ...  # type: int
-    fromOffset = ...  # type: int
-    untilOffset = ...  # type: int
+    topic: str
+    partition: int
+    fromOffset: int
+    untilOffset: int
     def __init__(self, topic: str, partition: int, fromOffset: int, untilOffset: int) -> None: ...
     def __eq__(self, other: Any) -> bool: ...
     def __ne__(self, other: Any) -> bool: ...
@@ -113,9 +113,9 @@ class KafkaTransformedDStream(TransformedDStream[U]):
     def __init__(self, prev: KafkaDStream[T], func: Callable[[datetime.datetime, RDD[T]], RDD[U]]) -> None: ...
 
 class KafkaMessageAndMetadata(Generic[T, U]):
-    topic = ...  # type: str
-    partition = ...  # type: int
-    offset = ...  # type: int
+    topic: str
+    partition: int
+    offset: int
     def __init__(self, topic, partition, offset, key, message) -> None: ...
     def __reduce__(self): ...
     @property

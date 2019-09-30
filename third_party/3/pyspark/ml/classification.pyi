@@ -133,7 +133,7 @@ class TreeClassifierParams:
     def getImpurity(self)  -> str: ...
 
 class GBTParams(TreeEnsembleParams):
-    supportedLossTypes = ...  # type: List[str]
+    supportedLossTypes: List[str]
 
 class DecisionTreeClassifier(JavaEstimator[DecisionTreeClassificationModel], HasFeaturesCol, HasLabelCol, HasPredictionCol, HasProbabilityCol, HasRawPredictionCol, DecisionTreeParams, TreeClassifierParams, HasCheckpointInterval, HasSeed, JavaMLWritable, JavaMLReadable[DecisionTreeClassifier]):
     def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., probabilityCol: str = ..., rawPredictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., checkpointInterval: int = ..., impurity: str = ..., seed: Optional[int] = ...) -> None: ...
@@ -219,6 +219,6 @@ class OneVsRest(Estimator[OneVsRestModel], OneVsRestParams, HasParallelism, Java
     def copy(self, extra: Optional[ParamMap] = ...) -> 'OneVsRest': ...
 
 class OneVsRestModel(Model, OneVsRestParams, JavaMLReadable[OneVsRestModel], JavaMLWritable):
-    models = ...  # type: List[Transformer]
+    models: List[Transformer]
     def __init__(self, models: List[Transformer]) -> None: ...
     def copy(self, extra: Optional[ParamMap] = ...) -> 'OneVsRestModel': ...

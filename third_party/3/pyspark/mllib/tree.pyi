@@ -36,7 +36,7 @@ class DecisionTree:
 class RandomForestModel(TreeEnsembleModel, JavaLoader[RandomForestModel]): ...
 
 class RandomForest:
-    supportedFeatureSubsetStrategies = ...  # type: Tuple[str, ...]
+    supportedFeatureSubsetStrategies: Tuple[str, ...]
     @classmethod
     def trainClassifier(cls, data: RDD[LabeledPoint], numClasses: int, categoricalFeaturesInfo: Dict[int, int], numTrees: int, featureSubsetStrategy: str = ..., impurity: str = ..., maxDepth: int = ..., maxBins: int = ..., seed: Optional[int] = ...) -> 'RandomForestModel': ...
     @classmethod

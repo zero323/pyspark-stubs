@@ -15,7 +15,7 @@ unicode = str
 long = int
 
 class Identifiable:
-    uid = ...  # type: str
+    uid: str
     def __init__(self) -> None: ...
 
 class BaseReadWrite:
@@ -35,7 +35,7 @@ class MLWriter(BaseReadWrite):
     def overwrite(self) -> MLWriter: ...
 
 class GeneralMLWriter(MLWriter):
-    source = ...  # type: str
+    source: str
     def format(self, source: str) -> MLWriter: ...
 
 class JavaMLWriter(MLWriter):
@@ -87,7 +87,7 @@ class DefaultParamsWritable(MLWritable):
     def write(self) -> MLWriter: ...
 
 class DefaultParamsWriter(MLWriter):
-    instance = ...  # type: DefaultParamsWritable
+    instance: DefaultParamsWritable
     def __init__(self, instance: DefaultParamsWritable) -> None: ...
     def saveImpl(self, path: str) -> None: ...
     @staticmethod
@@ -98,7 +98,7 @@ class DefaultParamsReadable(MLReadable[R]):
     def read(cls) -> MLReader[R]: ...
 
 class DefaultParamsReader(MLReader[R]):
-    cls = ...  # type: Type[R]
+    cls: Type[R]
     def __init__(self, cls: Type[MLReadable]) -> None: ...
     def load(self, path: str) -> R: ...
     @staticmethod

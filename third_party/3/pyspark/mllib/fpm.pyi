@@ -28,5 +28,5 @@ class PrefixSpan:
     @classmethod
     def train(cls, data: RDD[List[List[T]]], minSupport: float = ..., maxPatternLength: int = ..., maxLocalProjDBSize: int = ...) -> PrefixSpanModel[T]: ...
     class FreqSequence(tuple, Generic[T]):
-        sequence = ...  # type: List[T]
-        freq = ...  # type: int
+        sequence: List[T]
+        freq: int

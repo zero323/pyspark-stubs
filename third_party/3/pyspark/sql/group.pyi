@@ -12,7 +12,7 @@ from pyspark.sql.types import *
 from py4j.java_gateway import JavaObject  # type: ignore
 
 class GroupedData:
-    sql_ctx = ...  # type: SQLContext
+    sql_ctx: SQLContext
     def __init__(self, jgd: JavaObject, df: DataFrame) -> None: ...
     @overload
     def agg(self, *exprs: Column) -> DataFrame: ...
