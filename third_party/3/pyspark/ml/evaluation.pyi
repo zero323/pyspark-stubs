@@ -1,7 +1,10 @@
 # Stubs for pyspark.ml.evaluation (Python 3.5)
 #
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Type
+
+import abc
+
 from pyspark.ml.wrapper import JavaParams
 from pyspark.ml.param import Param, Params
 from pyspark.ml.param.shared import  HasFeaturesCol, HasLabelCol, HasPredictionCol, HasRawPredictionCol
@@ -10,12 +13,12 @@ from pyspark.ml.util import JavaMLReadable, JavaMLWritable
 ParamMap = Dict[Param, Any]
 
 class Evaluator(Params):
-    __metaclass__: Any
+    __metaclass__: Type[abc.ABCMeta]
     def evaluate(self, dataset, params: Optional[ParamMap] = ...) -> float: ...
     def isLargerBetter(self) -> bool: ...
 
 class JavaEvaluator(JavaParams, Evaluator):
-    __metaclass__: Any
+    __metaclass__: Type[abc.ABCMeta]
     def isLargerBetter(self) -> bool: ...
 
 class BinaryClassificationEvaluator(JavaEvaluator, HasLabelCol, HasRawPredictionCol, JavaMLReadable[BinaryClassificationEvaluator], JavaMLWritable):
