@@ -1,16 +1,13 @@
-# Stubs for pyspark.ml.evaluation (Python 3.5)
-#
-
-from typing import Any, Dict, Optional, Type
+# Stubs for pyspark.ml.evaluation (Python 3)
 
 import abc
+from typing import Any, Dict, Optional, Type
 
+from pyspark.ml._typing import ParamMap
 from pyspark.ml.wrapper import JavaParams
 from pyspark.ml.param import Param, Params
 from pyspark.ml.param.shared import  HasFeaturesCol, HasLabelCol, HasPredictionCol, HasRawPredictionCol
 from pyspark.ml.util import JavaMLReadable, JavaMLWritable
-
-ParamMap = Dict[Param, Any]
 
 class Evaluator(Params):
     __metaclass__: Type[abc.ABCMeta]
