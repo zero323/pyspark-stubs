@@ -1,5 +1,4 @@
-# Stubs for pyspark.ml.util (Python 3.5)
-#
+# Stubs for pyspark.ml.util (Python 3)
 
 from typing import Any, Dict, Generic, Optional, Type, TypeVar, Union
 
@@ -7,6 +6,7 @@ from pyspark.context import SparkContext
 from pyspark.ml.param import Params
 from pyspark.sql.context import SQLContext
 from pyspark.sql.session import SparkSession
+
 
 R = TypeVar("R", bound=MLReadable)
 
