@@ -6,7 +6,7 @@ from pyspark.ml.param.shared import *
 from pyspark.ml.util import *
 from pyspark.ml.wrapper import JavaEstimator as JavaEstimator, JavaModel as JavaModel, JavaParams as JavaParams, JavaPredictionModel as JavaPredictionModel, JavaPredictor as JavaPredictor
 
-class _DecisionTreeModel(JavaPredictionModel):
+class _DecisionTreeModel(JavaPredictionModel[T]):
     @property
     def numNodes(self) -> int: ...
     @property
@@ -34,7 +34,7 @@ class _DecisionTreeParams(HasCheckpointInterval, HasSeed, HasWeightCol):
     def getMaxMemoryInMB(self) -> int: ...
     def getCacheNodeIds(self) -> bool: ...
 
-class _TreeEnsembleModel(JavaPredictionModel):
+class _TreeEnsembleModel(JavaPredictionModel[T]):
     @property
     def trees(self) -> Sequence[_DecisionTreeModel]: ...
     @property
