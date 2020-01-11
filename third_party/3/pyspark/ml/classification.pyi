@@ -7,6 +7,7 @@ from pyspark.ml._typing import JM, M, P, T, ParamMap
 from pyspark.ml.base import Estimator, Model, Transformer
 from pyspark.ml.linalg import Matrix, Vector
 from pyspark.ml.param.shared import *
+from pyspark.ml.tree import _DecisionTreeModel, _DecisionTreeParams, _TreeEnsembleModel, _RandomForestParams, _GBTParams, _HasVarianceImpurity, _TreeClassifierParams, _TreeEnsembleParams
 from pyspark.ml.regression import DecisionTreeModel,  DecisionTreeParams, DecisionTreeRegressionModel, GBTParams, HasVarianceImpurity, RandomForestParams, TreeEnsembleModel
 from pyspark.ml.util import *
 from pyspark.ml.wrapper import JavaPredictionModel, JavaPredictor, JavaPredictorParams, JavaWrapper, JavaTransformer
