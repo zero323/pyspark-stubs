@@ -10,10 +10,10 @@ from pyspark.ml.param.shared import *
 from pyspark.ml.tree import _DecisionTreeModel, _DecisionTreeParams, _TreeEnsembleModel, _RandomForestParams, _GBTParams, _HasVarianceImpurity, _TreeClassifierParams, _TreeEnsembleParams
 from pyspark.ml.regression import DecisionTreeRegressionModel
 from pyspark.ml.util import *
-from pyspark.ml.wrapper import JavaPredictionModel, JavaPredictor, JavaPredictorParams, JavaWrapper, JavaTransformer
+from pyspark.ml.wrapper import JavaPredictionModel, JavaPredictor, _JavaPredictorParams, JavaWrapper, JavaTransformer
 from pyspark.sql.dataframe import DataFrame
 
-class JavaClassifierParams(HasRawPredictionCol, JavaPredictorParams): ...
+class JavaClassifierParams(HasRawPredictionCol, _JavaPredictorParams): ...
 
 class JavaClassifier(JavaPredictor[JM], JavaClassifierParams, metaclass=abc.ABCMeta):
     def setRawPredictionCol(self: P, value: str) -> P: ...
