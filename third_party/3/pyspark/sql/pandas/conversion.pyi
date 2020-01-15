@@ -1,16 +1,24 @@
-from pyspark.sql.types import *
+from typing import overload
+from typing import Any, Iterable, List, Optional, Tuple, Union
+
 from pyspark import since as since
+from pyspark.rdd import RDD
+import pyspark.sql.dataframe
 from pyspark.sql.pandas.serializers import ArrowCollectSerializer as ArrowCollectSerializer
-from pyspark.sql.types import IntegralType as IntegralType
+from pyspark.sql.types import *
 from pyspark.traceback_utils import SCCallSiteSync as SCCallSiteSync
-from typing import Any, Optional
+
+import pandas.core.frame # type: ignore
 
 basestring = str
 unicode = str
 xrange = range
 
 class PandasConversionMixin:
-    def toPandas(self): ...
+    def toPandas(self) -> pandas.core.frame.DataFrame: ...
 
 class SparkConversionMixin:
-    def createDataFrame(self, data: Any, schema: Optional[Any] = ..., samplingRatio: Optional[Any] = ..., verifySchema: bool = ...): ...
+    @overload
+    def createDataFrame(self, data: Union[RDD[Union[Tuple, List]], Iterable[Union[Tuple, List]], pandas.core.frame.DataFrame], samplingRatio: Optional[float] = ...) ->  pyspark.sql.dataframe.DataFrame: ...
+    @overload
+    def createDataFrame(self, data: Union[RDD[Union[Tuple, List]], Iterable[Union[Tuple, List]], pandas.core.frame.DataFrame], schema: Optional[Union[List[str], Tuple[str, ...]]] = ..., samplingRatio: Optional[float] = ...) ->  pyspark.sql.dataframe.DataFrame: ...
