@@ -1,6 +1,3 @@
-# Stubs for pyspark.rdd (Python 3.5)
-#
-
 from typing import overload
 from typing import Any, Callable, Dict, Generic, Hashable, Iterable, Iterator, List, Optional, Tuple, Union, TypeVar
 
@@ -9,6 +6,9 @@ from pyspark.resultiterable import ResultIterable
 from pyspark.serializers import Serializer
 from pyspark.storagelevel import StorageLevel
 from pyspark.statcounter import StatCounter
+from pyspark.sql.dataframe import DataFrame
+from pyspark.sql.types import StructType
+from pyspark.sql._typing import RowLike
 from py4j.java_gateway import JavaObject  # type: ignore
 from numpy import int32, int64, float32, float64, ndarray  # type: ignore
 
@@ -153,6 +153,10 @@ class RDD(Generic[T]):
     def meanApprox(self: 'RDD[Union[float, int]]', timeout: int, confidence: float = ...) -> BoundedFloat: ...
     def countApproxDistinct(self, relativeSD: float = ...) -> int: ...
     def toLocalIterator(self) -> Iterator[T]: ...
+    @overload
+    def toDF(self: RDD[RowLike], schema: Optional[List[str]] = ..., sampleRatio: Optional[float] = ...) -> DataFrame: ...
+    @overload
+    def toDF(self: RDD[RowLike], schema: Optional[StructType] = ...) -> DataFrame: ...
 
 class PipelinedRDD(RDD):
     func = ...  # type: Callable
