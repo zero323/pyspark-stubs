@@ -10,6 +10,7 @@ TypeCheckSuite.files = [
     "ml-readable.test",
     "resultiterable.test",
     "sql-column.test",
+    "sql-pandas-typing-compatibility.test",
     "sql-readwriter.test",
     "sql-udf.test",
 ]
