@@ -12,5 +12,6 @@ TypeCheckSuite.files = [
     "sql-column.test",
     "sql-pandas-typing-compatibility.test",
     "sql-readwriter.test",
+    "core-context.test",    
     "sql-udf.test",
 ]
