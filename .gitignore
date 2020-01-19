@@ -30,3 +30,5 @@ htmlcov
 .coverage*
 
 /dist
+
+spark-source
