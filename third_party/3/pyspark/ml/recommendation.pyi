@@ -8,7 +8,16 @@ from pyspark.ml.wrapper import JavaEstimator, JavaModel
 from pyspark.ml.param.shared import *
 from pyspark.sql.dataframe import DataFrame
 
-class ALS(JavaEstimator[ALSModel], HasCheckpointInterval, HasMaxIter, HasPredictionCol, HasRegParam, HasSeed, JavaMLWritable, JavaMLReadable[ALS]):
+class ALS(
+    JavaEstimator[ALSModel],
+    HasCheckpointInterval,
+    HasMaxIter,
+    HasPredictionCol,
+    HasRegParam,
+    HasSeed,
+    JavaMLWritable,
+    JavaMLReadable[ALS],
+):
     rank: Param[int]
     numUserBlocks: Param[int]
     numItemBlocks: Param[int]
@@ -21,8 +30,46 @@ class ALS(JavaEstimator[ALSModel], HasCheckpointInterval, HasMaxIter, HasPredict
     intermediateStorageLevel: Param[str]
     finalStorageLevel: Param[str]
     coldStartStrategy: Param[str]
-    def __init__(self, *, rank: int = ..., maxIter: int = ..., regParam: float = ..., numUserBlocks: int = ..., numItemBlocks: int = ..., implicitPrefs: bool = ..., alpha: float = ..., userCol: str = ..., itemCol: str = ..., seed: Optional[int] = ..., ratingCol: str = ..., nonnegative: bool = ..., checkpointInterval: int = ..., intermediateStorageLevel: str = ..., finalStorageLevel: str = ...,  coldStartStrategy: str = ...) -> None: ...
-    def setParams(self, *, rank: int = ..., maxIter: int = ..., regParam: float = ..., numUserBlocks: int = ..., numItemBlocks: int = ..., implicitPrefs: bool = ..., alpha: float = ..., userCol: str = ..., itemCol: str = ..., seed: Optional[int] = ..., ratingCol: str = ..., nonnegative: bool = ..., checkpointInterval: int = ..., intermediateStorageLevel: str = ..., finalStorageLevel: str = ...,  coldStartStrategy: str = ...) -> ALS: ...
+    def __init__(
+        self,
+        *,
+        rank: int = ...,
+        maxIter: int = ...,
+        regParam: float = ...,
+        numUserBlocks: int = ...,
+        numItemBlocks: int = ...,
+        implicitPrefs: bool = ...,
+        alpha: float = ...,
+        userCol: str = ...,
+        itemCol: str = ...,
+        seed: Optional[int] = ...,
+        ratingCol: str = ...,
+        nonnegative: bool = ...,
+        checkpointInterval: int = ...,
+        intermediateStorageLevel: str = ...,
+        finalStorageLevel: str = ...,
+        coldStartStrategy: str = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        rank: int = ...,
+        maxIter: int = ...,
+        regParam: float = ...,
+        numUserBlocks: int = ...,
+        numItemBlocks: int = ...,
+        implicitPrefs: bool = ...,
+        alpha: float = ...,
+        userCol: str = ...,
+        itemCol: str = ...,
+        seed: Optional[int] = ...,
+        ratingCol: str = ...,
+        nonnegative: bool = ...,
+        checkpointInterval: int = ...,
+        intermediateStorageLevel: str = ...,
+        finalStorageLevel: str = ...,
+        coldStartStrategy: str = ...
+    ) -> ALS: ...
     def setRank(self, value: int) -> ALS: ...
     def getRank(self) -> int: ...
     def setNumUserBlocks(self, value: int) -> ALS: ...
@@ -58,5 +105,9 @@ class ALSModel(JavaModel, JavaMLWritable, JavaMLReadable[ALSModel]):
     def itemFactors(self) -> DataFrame: ...
     def recommendForAllUsers(self, numItems: int) -> DataFrame: ...
     def recommendForAllItems(self, numUsers: int) -> DataFrame: ...
-    def recommendForUserSubset(self, dataset: DataFrame, numItems: int) -> DataFrame: ...
-    def recommendForItemSubset(self, dataset: DataFrame, numUsers: int) -> DataFrame: ...
+    def recommendForUserSubset(
+        self, dataset: DataFrame, numItems: int
+    ) -> DataFrame: ...
+    def recommendForItemSubset(
+        self, dataset: DataFrame, numUsers: int
+    ) -> DataFrame: ...

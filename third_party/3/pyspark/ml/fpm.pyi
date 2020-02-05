@@ -35,15 +35,54 @@ class FPGrowthModel(JavaModel, JavaMLWritable, JavaMLReadable[FPGrowthModel]):
     @property
     def associationRules(self) -> DataFrame: ...
 
-class FPGrowth(JavaEstimator[FPGrowthModel], HasItemsCol, HasPredictionCol, HasMinSupport, HasNumPartitions, HasMinConfidence, JavaMLWritable, JavaMLReadable[FPGrowth]):
-    def __init__(self, *, minSupport: float = ..., minConfidence: float = ..., itemsCol: str = ..., predictionCol: str = ..., numPartitions: Optional[int] = ...) -> None: ...
-    def setParams(self, *, minSupport: float = ..., minConfidence: float = ..., itemsCol: str = ..., predictionCol: str = ..., numPartitions: Optional[int] = ...) -> FPGrowth: ...
+class FPGrowth(
+    JavaEstimator[FPGrowthModel],
+    HasItemsCol,
+    HasPredictionCol,
+    HasMinSupport,
+    HasNumPartitions,
+    HasMinConfidence,
+    JavaMLWritable,
+    JavaMLReadable[FPGrowth],
+):
+    def __init__(
+        self,
+        *,
+        minSupport: float = ...,
+        minConfidence: float = ...,
+        itemsCol: str = ...,
+        predictionCol: str = ...,
+        numPartitions: Optional[int] = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        minSupport: float = ...,
+        minConfidence: float = ...,
+        itemsCol: str = ...,
+        predictionCol: str = ...,
+        numPartitions: Optional[int] = ...
+    ) -> FPGrowth: ...
 
 class PrefixSpan(JavaParams):
     minSupport: Param[float]
     maxPatternLength: Param[int]
     maxLocalProjDBSize: Param[int]
     sequenceCol: Param[str]
-    def __init__(self, *, minSupport: float = ..., maxPatternLength: int = ..., maxLocalProjDBSize: int = ..., sequenceCol: str = ...) -> None: ...
-    def setParams(self, *, minSupport: float = ..., maxPatternLength: int = ..., maxLocalProjDBSize: int = ..., sequenceCol: str = ...) -> PrefixSpan: ...
+    def __init__(
+        self,
+        *,
+        minSupport: float = ...,
+        maxPatternLength: int = ...,
+        maxLocalProjDBSize: int = ...,
+        sequenceCol: str = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        minSupport: float = ...,
+        maxPatternLength: int = ...,
+        maxLocalProjDBSize: int = ...,
+        sequenceCol: str = ...
+    ) -> PrefixSpan: ...
     def findFrequentSequentialPatterns(self, dataset: DataFrame) -> DataFrame: ...
