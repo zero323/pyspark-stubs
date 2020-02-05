@@ -33,6 +33,31 @@ class FPGrowthModel(JavaModel, JavaMLWritable, JavaMLReadable):
     @property
     def associationRules(self): ...
 
-class FPGrowth(JavaEstimator, HasItemsCol, HasPredictionCol, HasMinSupport, HasNumPartitions, HasMinConfidence, JavaMLWritable, JavaMLReadable):
-    def __init__(self, *, minSupport: float = ..., minConfidence: float = ..., itemsCol: str = ..., predictionCol: str = ..., numPartitions: Optional[int] = ...) -> None: ...
-    def setParams(self, *, minSupport: float = ..., minConfidence: float = ..., itemsCol: str = ..., predictionCol: str = ..., numPartitions: Optional[int] = ...) -> FPGrowth: ...
+class FPGrowth(
+    JavaEstimator,
+    HasItemsCol,
+    HasPredictionCol,
+    HasMinSupport,
+    HasNumPartitions,
+    HasMinConfidence,
+    JavaMLWritable,
+    JavaMLReadable,
+):
+    def __init__(
+        self,
+        *,
+        minSupport: float = ...,
+        minConfidence: float = ...,
+        itemsCol: str = ...,
+        predictionCol: str = ...,
+        numPartitions: Optional[int] = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        minSupport: float = ...,
+        minConfidence: float = ...,
+        itemsCol: str = ...,
+        predictionCol: str = ...,
+        numPartitions: Optional[int] = ...
+    ) -> FPGrowth: ...

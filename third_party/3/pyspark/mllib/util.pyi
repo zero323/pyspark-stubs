@@ -9,7 +9,13 @@ basestring = ...  # type: Any
 
 class MLUtils:
     @staticmethod
-    def loadLibSVMFile(sc, path, numFeatures: int = ..., minPartitions: Optional[Any] = ..., multiclass: Optional[Any] = ...): ...
+    def loadLibSVMFile(
+        sc,
+        path,
+        numFeatures: int = ...,
+        minPartitions: Optional[Any] = ...,
+        multiclass: Optional[Any] = ...,
+    ): ...
     @staticmethod
     def saveAsLibSVMFile(data, dir): ...
     @staticmethod
@@ -43,6 +49,10 @@ class JavaLoader(Loader):
 
 class LinearDataGenerator:
     @staticmethod
-    def generateLinearInput(intercept, weights, xMean, xVariance, nPoints, seed, eps): ...
+    def generateLinearInput(
+        intercept, weights, xMean, xVariance, nPoints, seed, eps
+    ): ...
     @staticmethod
-    def generateLinearRDD(sc, nexamples, nfeatures, eps, nParts: int = ..., intercept: float = ...): ...
+    def generateLinearRDD(
+        sc, nexamples, nfeatures, eps, nParts: int = ..., intercept: float = ...
+    ): ...

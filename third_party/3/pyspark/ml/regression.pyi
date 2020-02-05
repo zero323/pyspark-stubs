@@ -8,16 +8,66 @@ from pyspark.ml.util import *
 from pyspark.ml.wrapper import JavaEstimator, JavaModel, JavaWrapper
 from pyspark.sql.dataframe import DataFrame
 
-class LinearRegression(JavaEstimator, HasFeaturesCol, HasLabelCol, HasPredictionCol, HasMaxIter, HasRegParam, HasTol, HasElasticNetParam, HasFitIntercept, HasStandardization, HasSolver, HasWeightCol, HasAggregationDepth, JavaMLWritable, JavaMLReadable):
-    solver = ... # type: Param
-    loss = ... # type: Param
-    epsilon = ... # type: Param
-    def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxIter: int = ..., regParam: float = ..., elasticNetParam: float = ..., tol: float = ..., fitIntercept: bool = ..., standardization: bool = ..., solver: str = ..., weightCol: Optional[str] = ..., aggregationDepth: int = ..., epsilon: float = ...) -> None: ...
-    def setParams(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxIter: int = ..., regParam: float = ..., elasticNetParam: float = ..., tol: float = ..., fitIntercept: bool = ..., standardization: bool = ..., solver: str = ..., weightCol: Optional[str] = ..., aggregationDepth: int = ..., epsilon: float = ...) -> 'LinearRegression': ...
+class LinearRegression(
+    JavaEstimator,
+    HasFeaturesCol,
+    HasLabelCol,
+    HasPredictionCol,
+    HasMaxIter,
+    HasRegParam,
+    HasTol,
+    HasElasticNetParam,
+    HasFitIntercept,
+    HasStandardization,
+    HasSolver,
+    HasWeightCol,
+    HasAggregationDepth,
+    JavaMLWritable,
+    JavaMLReadable,
+):
+    solver = ...  # type: Param
+    loss = ...  # type: Param
+    epsilon = ...  # type: Param
+    def __init__(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxIter: int = ...,
+        regParam: float = ...,
+        elasticNetParam: float = ...,
+        tol: float = ...,
+        fitIntercept: bool = ...,
+        standardization: bool = ...,
+        solver: str = ...,
+        weightCol: Optional[str] = ...,
+        aggregationDepth: int = ...,
+        epsilon: float = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxIter: int = ...,
+        regParam: float = ...,
+        elasticNetParam: float = ...,
+        tol: float = ...,
+        fitIntercept: bool = ...,
+        standardization: bool = ...,
+        solver: str = ...,
+        weightCol: Optional[str] = ...,
+        aggregationDepth: int = ...,
+        epsilon: float = ...
+    ) -> "LinearRegression": ...
     def setEpsilon(self, value: float) -> LinearRegression: ...
     def getEpsilon(self) -> float: ...
 
-class LinearRegressionModel(JavaModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable):
+class LinearRegressionModel(
+    JavaModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable
+):
     @property
     def coefficients(self) -> Vector: ...
     @property
@@ -66,14 +116,40 @@ class LinearRegressionTrainingSummary(LinearRegressionSummary):
     @property
     def totalIterations(self) -> int: ...
 
-class IsotonicRegression(JavaEstimator, HasFeaturesCol, HasLabelCol, HasPredictionCol, HasWeightCol, JavaMLWritable, JavaMLReadable):
+class IsotonicRegression(
+    JavaEstimator,
+    HasFeaturesCol,
+    HasLabelCol,
+    HasPredictionCol,
+    HasWeightCol,
+    JavaMLWritable,
+    JavaMLReadable,
+):
     isotonic = ...  # type: Param
     featureIndex = ...  # type: Param
-    def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., weightCol: Optional[str] = ..., isotonic: bool = ..., featureIndex: int = ...) -> None: ...
-    def setParams(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., weightCol: Optional[str] = ..., isotonic: bool = ..., featureIndex: int = ...) -> 'IsotonicRegression': ...
-    def setIsotonic(self, value: bool) -> 'IsotonicRegression': ...
+    def __init__(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        weightCol: Optional[str] = ...,
+        isotonic: bool = ...,
+        featureIndex: int = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        weightCol: Optional[str] = ...,
+        isotonic: bool = ...,
+        featureIndex: int = ...
+    ) -> "IsotonicRegression": ...
+    def setIsotonic(self, value: bool) -> "IsotonicRegression": ...
     def getIsotonic(self) -> bool: ...
-    def setFeatureIndex(self, value: int) -> 'IsotonicRegression': ...
+    def setFeatureIndex(self, value: int) -> "IsotonicRegression": ...
     def getFeatureIndex(self) -> int: ...
 
 class IsotonicRegressionModel(JavaModel, JavaMLWritable, JavaMLReadable):
@@ -85,14 +161,14 @@ class IsotonicRegressionModel(JavaModel, JavaMLWritable, JavaMLReadable):
 class TreeEnsembleParams(DecisionTreeParams):
     subsamplingRate = ...  # type: Param
     def __init__(self) -> None: ...
-    def setSubsamplingRate(self, value: float) -> 'TreeEnsembleParams': ...
+    def setSubsamplingRate(self, value: float) -> "TreeEnsembleParams": ...
     def getSubsamplingRate(self) -> float: ...
 
 class TreeRegressorParams(Params):
     supportedImpurities = ...  # type: List[str]
     impurity = ...  # type: Param
     def __init__(self) -> None: ...
-    def setImpurity(self, value: str) -> 'TreeRegressorParams': ...
+    def setImpurity(self, value: str) -> "TreeRegressorParams": ...
     def getImpurity(self) -> str: ...
 
 class RandomForestParams(TreeEnsembleParams):
@@ -100,17 +176,61 @@ class RandomForestParams(TreeEnsembleParams):
     numTrees = ...  # type: Param
     featureSubsetStrategy = ...  # type: Param
     def __init__(self) -> None: ...
-    def setNumTrees(self, value: int) -> 'RandomForestParams': ...
+    def setNumTrees(self, value: int) -> "RandomForestParams": ...
     def getNumTrees(self) -> int: ...
-    def setFeatureSubsetStrategy(self, value: str) -> 'RandomForestParams': ...
+    def setFeatureSubsetStrategy(self, value: str) -> "RandomForestParams": ...
     def getFeatureSubsetStrategy(self) -> str: ...
 
 class GBTParams(TreeEnsembleParams):
     supportedLossTypes = ...  # type: Any
 
-class DecisionTreeRegressor(JavaEstimator, HasFeaturesCol, HasLabelCol, HasPredictionCol, DecisionTreeParams, TreeRegressorParams, HasCheckpointInterval, HasSeed, JavaMLWritable, JavaMLReadable, HasVarianceCol):
-    def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., checkpointInterval: int = ..., impurity: str = ..., seed: Optional[int] = ..., varianceCol: Optional[str] = ...) -> None: ...
-    def setParams(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., checkpointInterval: int = ..., impurity: str = ..., seed: Optional[int] = ..., varianceCol: Optional[str] = ...) -> 'DecisionTreeRegressor': ...
+class DecisionTreeRegressor(
+    JavaEstimator,
+    HasFeaturesCol,
+    HasLabelCol,
+    HasPredictionCol,
+    DecisionTreeParams,
+    TreeRegressorParams,
+    HasCheckpointInterval,
+    HasSeed,
+    JavaMLWritable,
+    JavaMLReadable,
+    HasVarianceCol,
+):
+    def __init__(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+        maxMemoryInMB: int = ...,
+        cacheNodeIds: bool = ...,
+        checkpointInterval: int = ...,
+        impurity: str = ...,
+        seed: Optional[int] = ...,
+        varianceCol: Optional[str] = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+        maxMemoryInMB: int = ...,
+        cacheNodeIds: bool = ...,
+        checkpointInterval: int = ...,
+        impurity: str = ...,
+        seed: Optional[int] = ...,
+        varianceCol: Optional[str] = ...
+    ) -> "DecisionTreeRegressor": ...
 
 class DecisionTreeModel(JavaModel, JavaPredictionModel):
     @property
@@ -136,40 +256,181 @@ class DecisionTreeRegressionModel(DecisionTreeModel, JavaMLWritable, JavaMLReada
     @property
     def featureImportances(self) -> Vector: ...
 
-class RandomForestRegressor(JavaEstimator, HasFeaturesCol, HasLabelCol, HasPredictionCol, HasSeed, RandomForestParams, TreeRegressorParams, HasCheckpointInterval, JavaMLWritable, JavaMLReadable):
-    def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., checkpointInterval: int = ..., impurity: str = ..., subsamplingRate: float = ..., seed: Optional[int] = ..., numTrees: int = ..., featureSubsetStrategy: str = ...) -> None: ...
-    def setParams(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., checkpointInterval: int = ..., impurity: str = ..., subsamplingRate: float = ..., seed: Optional[int] = ..., numTrees: int = ..., featureSubsetStrategy: str = ...) -> 'RandomForestRegressor': ...
+class RandomForestRegressor(
+    JavaEstimator,
+    HasFeaturesCol,
+    HasLabelCol,
+    HasPredictionCol,
+    HasSeed,
+    RandomForestParams,
+    TreeRegressorParams,
+    HasCheckpointInterval,
+    JavaMLWritable,
+    JavaMLReadable,
+):
+    def __init__(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+        maxMemoryInMB: int = ...,
+        cacheNodeIds: bool = ...,
+        checkpointInterval: int = ...,
+        impurity: str = ...,
+        subsamplingRate: float = ...,
+        seed: Optional[int] = ...,
+        numTrees: int = ...,
+        featureSubsetStrategy: str = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+        maxMemoryInMB: int = ...,
+        cacheNodeIds: bool = ...,
+        checkpointInterval: int = ...,
+        impurity: str = ...,
+        subsamplingRate: float = ...,
+        seed: Optional[int] = ...,
+        numTrees: int = ...,
+        featureSubsetStrategy: str = ...
+    ) -> "RandomForestRegressor": ...
 
-class RandomForestRegressionModel(TreeEnsembleModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable):
+class RandomForestRegressionModel(
+    TreeEnsembleModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable
+):
     @property
     def trees(self) -> Sequence[DecisionTreeRegressionModel]: ...
     @property
     def featureImportances(self) -> Vector: ...
 
-class GBTRegressor(JavaEstimator, HasFeaturesCol, HasLabelCol, HasPredictionCol, HasMaxIter, GBTParams, HasCheckpointInterval, HasStepSize, HasSeed, JavaMLWritable, JavaMLReadable, TreeRegressorParams):
+class GBTRegressor(
+    JavaEstimator,
+    HasFeaturesCol,
+    HasLabelCol,
+    HasPredictionCol,
+    HasMaxIter,
+    GBTParams,
+    HasCheckpointInterval,
+    HasStepSize,
+    HasSeed,
+    JavaMLWritable,
+    JavaMLReadable,
+    TreeRegressorParams,
+):
     lossType = ...  # type: Param
-    def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., subsamplingRate: float = ..., checkpointInterval: int = ..., lossType: str = ..., maxIter: int = ..., stepSize: float = ..., seed: Optional[int] = ..., impurity: str = ...) -> None: ...
-    def setParams(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ..., maxMemoryInMB: int = ..., cacheNodeIds: bool = ..., subsamplingRate: float = ..., checkpointInterval: int = ..., lossType: str = ..., maxIter: int = ..., stepSize: float = ..., seed: Optional[int] = ..., impuriy: str = ...) -> 'GBTRegressor': ...
-    def setLossType(self, value: str) -> 'GBTRegressor': ...
+    def __init__(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+        maxMemoryInMB: int = ...,
+        cacheNodeIds: bool = ...,
+        subsamplingRate: float = ...,
+        checkpointInterval: int = ...,
+        lossType: str = ...,
+        maxIter: int = ...,
+        stepSize: float = ...,
+        seed: Optional[int] = ...,
+        impurity: str = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+        maxMemoryInMB: int = ...,
+        cacheNodeIds: bool = ...,
+        subsamplingRate: float = ...,
+        checkpointInterval: int = ...,
+        lossType: str = ...,
+        maxIter: int = ...,
+        stepSize: float = ...,
+        seed: Optional[int] = ...,
+        impuriy: str = ...
+    ) -> "GBTRegressor": ...
+    def setLossType(self, value: str) -> "GBTRegressor": ...
     def getLossType(self) -> str: ...
 
-class GBTRegressionModel(TreeEnsembleModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable):
+class GBTRegressionModel(
+    TreeEnsembleModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable
+):
     @property
     def featureImportances(self) -> Vector: ...
     @property
     def trees(self) -> Sequence[DecisionTreeRegressionModel]: ...
 
-class AFTSurvivalRegression(JavaEstimator, HasFeaturesCol, HasLabelCol, HasPredictionCol, HasFitIntercept, HasMaxIter, HasTol, HasAggregationDepth, JavaMLWritable, JavaMLReadable):
+class AFTSurvivalRegression(
+    JavaEstimator,
+    HasFeaturesCol,
+    HasLabelCol,
+    HasPredictionCol,
+    HasFitIntercept,
+    HasMaxIter,
+    HasTol,
+    HasAggregationDepth,
+    JavaMLWritable,
+    JavaMLReadable,
+):
     censorCol = ...  # type: Param
     quantileProbabilities = ...  # type: Param
     quantilesCol = ...  # type: Param
-    def __init__(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., fitIntercept: bool = ..., maxIter: int = ..., tol: float = ..., censorCol: str = ..., quantileProbabilities: List[float] = ..., quantilesCol: Optional[str] = ..., aggregationDepth: int = ...) -> None: ...
-    def setParams(self, *, featuresCol: str = ..., labelCol: str = ..., predictionCol: str = ..., fitIntercept: bool = ..., maxIter: int = ..., tol: float = ..., censorCol: str = ..., quantileProbabilities: List[float] = ..., quantilesCol: Optional[str] = ..., aggregationDepth: int = ...) -> 'AFTSurvivalRegression': ...
-    def setCensorCol(self, value: str) -> 'AFTSurvivalRegression': ...
+    def __init__(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        fitIntercept: bool = ...,
+        maxIter: int = ...,
+        tol: float = ...,
+        censorCol: str = ...,
+        quantileProbabilities: List[float] = ...,
+        quantilesCol: Optional[str] = ...,
+        aggregationDepth: int = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        featuresCol: str = ...,
+        labelCol: str = ...,
+        predictionCol: str = ...,
+        fitIntercept: bool = ...,
+        maxIter: int = ...,
+        tol: float = ...,
+        censorCol: str = ...,
+        quantileProbabilities: List[float] = ...,
+        quantilesCol: Optional[str] = ...,
+        aggregationDepth: int = ...
+    ) -> "AFTSurvivalRegression": ...
+    def setCensorCol(self, value: str) -> "AFTSurvivalRegression": ...
     def getCensorCol(self) -> str: ...
-    def setQuantileProbabilities(self, value: List[float]) -> 'AFTSurvivalRegression': ...
+    def setQuantileProbabilities(
+        self, value: List[float]
+    ) -> "AFTSurvivalRegression": ...
     def getQuantileProbabilities(self) -> List[float]: ...
-    def setQuantilesCol(self, value: str) -> 'AFTSurvivalRegression': ...
+    def setQuantilesCol(self, value: str) -> "AFTSurvivalRegression": ...
     def getQuantilesCol(self) -> str: ...
 
 class AFTSurvivalRegressionModel(JavaModel, JavaMLWritable, JavaMLReadable):
@@ -182,7 +443,20 @@ class AFTSurvivalRegressionModel(JavaModel, JavaMLWritable, JavaMLReadable):
     def predictQuantiles(self, features: Vector) -> Vector: ...
     def predict(self, features: Vector) -> float: ...
 
-class GeneralizedLinearRegression(JavaEstimator, HasLabelCol, HasFeaturesCol, HasPredictionCol, HasFitIntercept, HasMaxIter, HasTol, HasRegParam, HasWeightCol, HasSolver, JavaMLWritable, JavaMLReadable):
+class GeneralizedLinearRegression(
+    JavaEstimator,
+    HasLabelCol,
+    HasFeaturesCol,
+    HasPredictionCol,
+    HasFitIntercept,
+    HasMaxIter,
+    HasTol,
+    HasRegParam,
+    HasWeightCol,
+    HasSolver,
+    JavaMLWritable,
+    JavaMLReadable,
+):
     family = ...  # type: Param
     link = ...  # type: Param
     linkPredictionCol = ...  # type: Param
@@ -190,22 +464,60 @@ class GeneralizedLinearRegression(JavaEstimator, HasLabelCol, HasFeaturesCol, Ha
     linkPower = ...  # type: Param
     solver = ...  # type: Param
     offsetCol = ...  # type: Param
-    def __init__(self, *, labelCol: str = ..., featuresCol: str = ..., predictionCol: str = ..., family: str = ..., link: Optional[str] = ..., fitIntercept: bool = ..., maxIter: int = ..., tol: float = ..., regParam: float = ..., weightCol: Optional[str] = ..., solver: str = ..., linkPredictionCol: Optional[str] = ...,  variancePower: float = ..., linkPower: Optional[float] = ..., offsetCol: Optional[str] = ...) -> None: ...
-    def setParams(self, *, labelCol: str = ..., featuresCol: str = ..., predictionCol: str = ..., family: str = ..., link: Optional[str] = ..., fitIntercept: bool = ..., maxIter: int = ..., tol: float = ..., regParam: float = ..., weightCol: Optional[str] = ..., solver: str = ..., linkPredictionCol: Optional[str] = ..., variancePower: float = ..., linkPower: Optional[float] = ..., offsetCol: Optional[str] = ...) -> GeneralizedLinearRegression: ...
-    def setFamily(self, value: str) -> 'GeneralizedLinearRegression': ...
+    def __init__(
+        self,
+        *,
+        labelCol: str = ...,
+        featuresCol: str = ...,
+        predictionCol: str = ...,
+        family: str = ...,
+        link: Optional[str] = ...,
+        fitIntercept: bool = ...,
+        maxIter: int = ...,
+        tol: float = ...,
+        regParam: float = ...,
+        weightCol: Optional[str] = ...,
+        solver: str = ...,
+        linkPredictionCol: Optional[str] = ...,
+        variancePower: float = ...,
+        linkPower: Optional[float] = ...,
+        offsetCol: Optional[str] = ...
+    ) -> None: ...
+    def setParams(
+        self,
+        *,
+        labelCol: str = ...,
+        featuresCol: str = ...,
+        predictionCol: str = ...,
+        family: str = ...,
+        link: Optional[str] = ...,
+        fitIntercept: bool = ...,
+        maxIter: int = ...,
+        tol: float = ...,
+        regParam: float = ...,
+        weightCol: Optional[str] = ...,
+        solver: str = ...,
+        linkPredictionCol: Optional[str] = ...,
+        variancePower: float = ...,
+        linkPower: Optional[float] = ...,
+        offsetCol: Optional[str] = ...
+    ) -> GeneralizedLinearRegression: ...
+    def setFamily(self, value: str) -> "GeneralizedLinearRegression": ...
     def getFamily(self) -> str: ...
-    def setLinkPredictionCol(self, value: str) -> 'GeneralizedLinearRegression': ...
+    def setLinkPredictionCol(self, value: str) -> "GeneralizedLinearRegression": ...
     def getLinkPredictionCol(self) -> str: ...
-    def setLink(self, value: str) -> 'GeneralizedLinearRegression': ...
+    def setLink(self, value: str) -> "GeneralizedLinearRegression": ...
     def getLink(self) -> str: ...
-    def setVariancePower(self, value: float) -> 'GeneralizedLinearRegression': ...
+    def setVariancePower(self, value: float) -> "GeneralizedLinearRegression": ...
     def getVariancePower(self) -> float: ...
-    def setLinkPower(self, value: float) -> 'GeneralizedLinearRegression': ...
+    def setLinkPower(self, value: float) -> "GeneralizedLinearRegression": ...
     def getLinkPower(self) -> float: ...
-    def setOffsetCol(self, value: str) -> 'GeneralizedLinearRegression': ...
+    def setOffsetCol(self, value: str) -> "GeneralizedLinearRegression": ...
     def getOffsetCol(self) -> str: ...
 
-class GeneralizedLinearRegressionModel(JavaModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable):
+class GeneralizedLinearRegressionModel(
+    JavaModel, JavaPredictionModel, JavaMLWritable, JavaMLReadable
+):
     @property
     def coefficients(self) -> Vector: ...
     @property
@@ -218,7 +530,7 @@ class GeneralizedLinearRegressionModel(JavaModel, JavaPredictionModel, JavaMLWri
 
 class GeneralizedLinearRegressionSummary(JavaWrapper):
     @property
-    def predictions(self) -> 'DataFrame': ...
+    def predictions(self) -> "DataFrame": ...
     @property
     def predictionCol(self) -> str: ...
     @property

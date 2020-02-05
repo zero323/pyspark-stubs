@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional, TypeVar
 import pyspark.ml.util
 from pyspark.ml.linalg import DenseVector, Matrix
 
-T = TypeVar('T')
+T = TypeVar("T")
 ParamMap = Dict[Param, Any]
 
 class Param:
@@ -15,7 +15,13 @@ class Param:
     name = ...  # type: str
     doc = ...  # type: str
     typeConverter = ...  # type: Any
-    def __init__(self, parent: pyspark.ml.util.Identifiable, name: str, doc: str, typeConverter: Optional[Callable[[Any], Any]] = ...) -> None: ...
+    def __init__(
+        self,
+        parent: pyspark.ml.util.Identifiable,
+        name: str,
+        doc: str,
+        typeConverter: Optional[Callable[[Any], Any]] = ...,
+    ) -> None: ...
     def __hash__(self) -> int: ...
     def __eq__(self, other: Any) -> bool: ...
 

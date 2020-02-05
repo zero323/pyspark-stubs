@@ -2,7 +2,7 @@
 #
 
 from typing import Any, Optional
-from py4j.java_gateway import JavaObject # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore
 
 class RuntimeConfig:
     def __init__(self, jconf: JavaObject) -> None: ...

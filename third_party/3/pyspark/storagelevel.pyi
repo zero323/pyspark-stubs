@@ -9,4 +9,11 @@ class StorageLevel:
     useOffHeap = ...  # type: bool
     deserialized = ...  # type: bool
     replication = ...  # type: int
-    def __init__(self, useDisk: bool, useMemory: bool, useOffHeap: bool, deserialized: bool, replication: int = ...) -> None: ...
+    def __init__(
+        self,
+        useDisk: bool,
+        useMemory: bool,
+        useOffHeap: bool,
+        deserialized: bool,
+        replication: int = ...,
+    ) -> None: ...
