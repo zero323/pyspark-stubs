@@ -4,7 +4,7 @@
 from typing import Any, Generic, Iterable, Iterator, TypeVar
 import collections
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class ResultIterable(collections.Iterable, Generic[T]):
     data = ...  # type: Iterable[T]

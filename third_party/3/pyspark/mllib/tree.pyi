@@ -29,23 +29,81 @@ class DecisionTreeModel(JavaModelWrapper, JavaSaveable, JavaLoader):
 
 class DecisionTree:
     @classmethod
-    def trainClassifier(cls, data: RDD[LabeledPoint], numClasses: int, categoricalFeaturesInfo: Dict[int, int], impurity: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ...) -> 'DecisionTreeModel': ...
+    def trainClassifier(
+        cls,
+        data: RDD[LabeledPoint],
+        numClasses: int,
+        categoricalFeaturesInfo: Dict[int, int],
+        impurity: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+    ) -> "DecisionTreeModel": ...
     @classmethod
-    def trainRegressor(cls, data: RDD[LabeledPoint], categoricalFeaturesInfo: Dict[int, int], impurity: str = ..., maxDepth: int = ..., maxBins: int = ..., minInstancesPerNode: int = ..., minInfoGain: float = ...) -> 'DecisionTreeModel': ...
+    def trainRegressor(
+        cls,
+        data: RDD[LabeledPoint],
+        categoricalFeaturesInfo: Dict[int, int],
+        impurity: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        minInstancesPerNode: int = ...,
+        minInfoGain: float = ...,
+    ) -> "DecisionTreeModel": ...
 
 class RandomForestModel(TreeEnsembleModel, JavaLoader): ...
 
 class RandomForest:
     supportedFeatureSubsetStrategies = ...  # type: Tuple[str, ...]
     @classmethod
-    def trainClassifier(cls, data: RDD[LabeledPoint], numClasses: int, categoricalFeaturesInfo: Dict[int, int], numTrees: int, featureSubsetStrategy: str = ..., impurity: str = ..., maxDepth: int = ..., maxBins: int = ..., seed: Optional[int] = ...) -> 'RandomForestModel': ...
+    def trainClassifier(
+        cls,
+        data: RDD[LabeledPoint],
+        numClasses: int,
+        categoricalFeaturesInfo: Dict[int, int],
+        numTrees: int,
+        featureSubsetStrategy: str = ...,
+        impurity: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        seed: Optional[int] = ...,
+    ) -> "RandomForestModel": ...
     @classmethod
-    def trainRegressor(cls, data: RDD[LabeledPoint], categoricalFeaturesInfo: Dict[int, int], numTrees: int, featureSubsetStrategy: str = ..., impurity: str = ..., maxDepth: int = ..., maxBins: int = ..., seed: Optional[int] = ...) -> 'RandomForestModel': ...
+    def trainRegressor(
+        cls,
+        data: RDD[LabeledPoint],
+        categoricalFeaturesInfo: Dict[int, int],
+        numTrees: int,
+        featureSubsetStrategy: str = ...,
+        impurity: str = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+        seed: Optional[int] = ...,
+    ) -> "RandomForestModel": ...
 
 class GradientBoostedTreesModel(TreeEnsembleModel, JavaLoader): ...
 
 class GradientBoostedTrees:
     @classmethod
-    def trainClassifier(cls, data: RDD[LabeledPoint], categoricalFeaturesInfo: Dict[int, int], loss: str = ..., numIterations: int = ..., learningRate: float = ..., maxDepth: int = ..., maxBins: int = ...) -> GradientBoostedTreesModel: ...
+    def trainClassifier(
+        cls,
+        data: RDD[LabeledPoint],
+        categoricalFeaturesInfo: Dict[int, int],
+        loss: str = ...,
+        numIterations: int = ...,
+        learningRate: float = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+    ) -> GradientBoostedTreesModel: ...
     @classmethod
-    def trainRegressor(cls, data: RDD[LabeledPoint], categoricalFeaturesInfo: Dict[int, int], loss: str = ..., numIterations: int = ..., learningRate: float = ..., maxDepth: int = ..., maxBins: int = ...) -> GradientBoostedTreesModel: ...
+    def trainRegressor(
+        cls,
+        data: RDD[LabeledPoint],
+        categoricalFeaturesInfo: Dict[int, int],
+        loss: str = ...,
+        numIterations: int = ...,
+        learningRate: float = ...,
+        maxDepth: int = ...,
+        maxBins: int = ...,
+    ) -> GradientBoostedTreesModel: ...

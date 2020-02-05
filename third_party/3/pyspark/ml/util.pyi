@@ -1,7 +1,7 @@
 # Stubs for pyspark.ml.util (Python 3.5)
 #
 
-from typing import Any, Dict,  Optional, Type, Union
+from typing import Any, Dict, Optional, Type, Union
 from pyspark.context import SparkContext
 from pyspark.ml.param import Params
 from pyspark.sql.context import SQLContext
@@ -62,7 +62,7 @@ class MLReadable:
 
 class JavaMLReadable(MLReadable):
     @classmethod
-    def read(cls) ->  JavaMLReader: ...
+    def read(cls) -> JavaMLReader: ...
 
 class JavaPredictionModel:
     @property
@@ -76,7 +76,13 @@ class DefaultParamsWriter(MLWriter):
     def __init__(self, instance: DefaultParamsWritable) -> None: ...
     def saveImpl(self, path: str) -> None: ...
     @staticmethod
-    def saveMetadata(instance: DefaultParamsWritable, path: str, sc: SparkContext, extraMetadata: Optional[Dict[str, Any]] = ..., paramMap: Optional[Dict[str, Any]] = ...) -> None: ...
+    def saveMetadata(
+        instance: DefaultParamsWritable,
+        path: str,
+        sc: SparkContext,
+        extraMetadata: Optional[Dict[str, Any]] = ...,
+        paramMap: Optional[Dict[str, Any]] = ...,
+    ) -> None: ...
 
 class DefaultParamsReadable(MLReadable):
     @classmethod
@@ -87,7 +93,9 @@ class DefaultParamsReader(MLReader):
     def __init__(self, cls: Type[MLReadable]) -> None: ...
     def load(self, path: str) -> MLReadable: ...
     @staticmethod
-    def loadMetadata(path: str, sc: SparkContext, expectedClassName: str = ...) -> Dict[str, Any]: ...
+    def loadMetadata(
+        path: str, sc: SparkContext, expectedClassName: str = ...
+    ) -> Dict[str, Any]: ...
     @staticmethod
     def getAndSetParams(instance: MLReadable, metadata: Dict[str, Any]) -> None: ...
     @staticmethod

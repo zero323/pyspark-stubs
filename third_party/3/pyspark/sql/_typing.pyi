@@ -8,7 +8,7 @@ ColumnOrName = Union[pyspark.sql.column.Column, str]
 Literal = Union[bool, int, float, str]
 DecimalLiteral = decimal.Decimal
 DateTimeLiteral = Union[datetime.datetime, datetime.date]
-LiteralType = TypeVar('LiteralType', bool, int, float, str)
+LiteralType = TypeVar("LiteralType", bool, int, float, str)
 DataTypeOrString = Union[pyspark.sql.types.DataType, str]
 
 RowLike = TypeVar("RowLike", List[Any], Tuple[Any, ...], pyspark.sql.types.Row)
