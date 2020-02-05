@@ -1,5 +1,5 @@
 git+https://github.com/python/mypy.git@master
-typed-ast>=1.0.4
-flake8==3.5.0
-flake8-bugbear==18.2.0
+black
+flake8==3.7.8
+flake8-bugbear==19.3.0
 pyspark>=2.4.0,<3.0.0

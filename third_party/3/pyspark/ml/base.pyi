@@ -2,7 +2,18 @@
 
 import abc
 from typing import overload
-from typing import Any, Callable, Dict, Generic, Iterable, List, Optional, Tuple, Type, TypeVar
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Generic,
+    Iterable,
+    List,
+    Optional,
+    Tuple,
+    Type,
+    TypeVar,
+)
 
 import _thread
 
@@ -18,7 +29,9 @@ class _FitMultipleIterator:
     numModel: int
     counter: int = ...
     lock: _thread.LockType
-    def __init__(self, fitSingleModel: Callable[[int], Transformer], numModels: int) -> None: ...
+    def __init__(
+        self, fitSingleModel: Callable[[int], Transformer], numModels: int
+    ) -> None: ...
     def __iter__(self) -> _FitMultipleIterator: ...
     def __next__(self) -> Tuple[int, Transformer]: ...
     def next(self) -> Tuple[int, Transformer]: ...
@@ -29,11 +42,15 @@ class Estimator(Params, Generic[M]):
     def fit(self, dataset: DataFrame, params: Optional[ParamMap] = ...) -> M: ...
     @overload
     def fit(self, dataset: DataFrame, params: List[ParamMap]) -> List[M]: ...
-    def fitMultiple(self, dataset: DataFrame, params: List[ParamMap]) -> Iterable[Tuple[int, M]]: ...
+    def fitMultiple(
+        self, dataset: DataFrame, params: List[ParamMap]
+    ) -> Iterable[Tuple[int, M]]: ...
 
 class Transformer(Params):
     __metaclass__: Type[abc.ABCMeta]
-    def transform(self, dataset: DataFrame, params: Optional[ParamMap] = ...) -> DataFrame: ...
+    def transform(
+        self, dataset: DataFrame, params: Optional[ParamMap] = ...
+    ) -> DataFrame: ...
 
 class Model(Transformer):
     __metaclass__: Type[abc.ABCMeta]
