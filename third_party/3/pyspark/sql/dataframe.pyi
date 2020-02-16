@@ -71,6 +71,9 @@ class DataFrame:
         self, numPartitions: int, *cols: ColumnOrName
     ) -> DataFrame: ...
     def distinct(self) -> DataFrame: ...
+    @overload
+    def sample(self, fraction: float, seed: Optional[int] = ...) -> DataFrame: ...
+    @overload
     def sample(
         self,
         withReplacement: Optional[bool],
