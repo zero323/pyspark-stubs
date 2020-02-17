@@ -26,7 +26,7 @@ df.sample(withReplacement=False) # E: No overload variant of "sample" of "DataFr
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit, col
 spark = SparkSession.builder.getOrCreate()
-df = spark.range(1).withColumn("foo", lit(1)).withColumn("bar", lit(1))
+df = spark.range(1)
 df.drop("id")
 df.drop("id", "foo")
 df.drop(df.id)
