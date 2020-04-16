@@ -21,6 +21,77 @@ df.sample(withReplacement=False) # E: No overload variant of "sample" of "DataFr
 
 [out]
 
+[case selectColumns]
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+spark = SparkSession.builder.getOrCreate()
+
+data = [('Alice', 1)]
+df = spark.createDataFrame(data, schema="name str, age int")
+
+df.select(["name", "age"])
+df.select([col("name"), col("age")])
+
+df.select(["name", col("age")])  # E: Argument 1 to "select" of "DataFrame" has incompatible type "List[object]"; expected "Union[List[Column], List[str]]"
+
+[out]
+
+[case groupBy]
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+spark = SparkSession.builder.getOrCreate()
+
+data = [('Alice', 1)]
+df = spark.createDataFrame(data, schema="name str, age int")
+
+df.groupBy(["name", "age"])
+df.groupby(["name", "age"])
+df.groupBy([col("name"), col("age")])
+df.groupby([col("name"), col("age")])
+
+
+df.groupBy(["name", col("age")])  # E: Argument 1 to "groupBy" of "DataFrame" has incompatible type "List[object]"; expected "Union[List[Column], List[str]]"
+df.groupby(["name", col("age")])  # E: Argument 1 to "groupby" of "DataFrame" has incompatible type "List[object]"; expected "Union[List[Column], List[str]]"
+
+[out]
+
+[case rollup]
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+spark = SparkSession.builder.getOrCreate()
+
+data = [('Alice', 1)]
+df = spark.createDataFrame(data, schema="name str, age int")
+
+df.rollup(["name", "age"])
+df.rollup([col("name"), col("age")])
+
+
+df.rollup(["name", col("age")])  # E: Argument 1 to "rollup" of "DataFrame" has incompatible type "List[object]"; expected "Union[List[Column], List[str]]"
+
+[out]
+
+[case cube]
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+spark = SparkSession.builder.getOrCreate()
+
+data = [('Alice', 1)]
+df = spark.createDataFrame(data, schema="name str, age int")
+
+df.cube(["name", "age"])
+df.cube([col("name"), col("age")])
+
+
+df.cube(["name", col("age")])  # E: Argument 1 to "cube" of "DataFrame" has incompatible type "List[object]"; expected "Union[List[Column], List[str]]"
+
+[out]
+
+
 
 [case dropColumns]
 from pyspark.sql import SparkSession
