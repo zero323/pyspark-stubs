@@ -3,7 +3,7 @@
 
 from typing import Any, Iterable
 from pyspark.rdd import RDD
-from numpy import ndarray  # type: ignore
+from numpy import ndarray  # type: ignore[import]
 
 xrange: range
 

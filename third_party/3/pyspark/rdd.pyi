@@ -15,7 +15,7 @@ from typing import (
 )
 from typing_extensions import Literal
 
-from numpy import int32, int64, float32, float64, ndarray  # type: ignore
+from numpy import int32, int64, float32, float64, ndarray  # type: ignore[import]
 
 from pyspark._typing import SupportsOrdering
 from pyspark.sql.pandas._typing import (

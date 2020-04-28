@@ -5,7 +5,7 @@ from typing import overload
 from typing import Any, Dict, Generic, Iterable, List, Optional, Tuple, TypeVar, Union
 from pyspark.ml import linalg as newlinalg
 from pyspark.sql.types import StructType, UserDefinedType
-from numpy import float64, ndarray  # type: ignore
+from numpy import float64, ndarray  # type: ignore[import]
 
 QT = TypeVar("QT")
 RT = TypeVar("RT")
