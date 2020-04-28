@@ -9,7 +9,7 @@ from pyspark.sql.context import SQLContext
 from pyspark.sql.column import Column
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.types import *
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 class GroupedData:
     sql_ctx: SQLContext

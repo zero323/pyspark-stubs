@@ -20,8 +20,8 @@ import pyspark.sql.column
 import pyspark.sql.types
 from pyspark.sql.column import Column
 
-import pandas.core.frame  # type: ignore
-import pandas.core.series  # type: ignore
+import pandas.core.frame  # type: ignore[import]
+import pandas.core.series  # type: ignore[import]
 
 ColumnOrName = Union[pyspark.sql.column.Column, str]
 DecimalLiteral = decimal.Decimal

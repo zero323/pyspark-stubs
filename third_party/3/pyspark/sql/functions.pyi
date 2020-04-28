@@ -3,9 +3,6 @@
 from typing import overload
 from typing import Any, Optional, Union, Dict, Callable
 
-import pandas.core.frame  # type: ignore
-import pandas.core.series  # type: ignore
-
 from pyspark.sql._typing import (
     ColumnOrName,
     DataTypeOrString,

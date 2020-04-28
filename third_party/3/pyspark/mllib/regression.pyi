@@ -9,7 +9,7 @@ from pyspark.context import SparkContext
 from pyspark.mllib.linalg import Vector
 from pyspark.mllib.util import Saveable, Loader
 from pyspark.streaming.dstream import DStream
-from numpy import ndarray  # type: ignore
+from numpy import ndarray  # type: ignore[import]
 
 K = TypeVar("K")
 

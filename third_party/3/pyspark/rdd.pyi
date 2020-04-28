@@ -14,7 +14,7 @@ from typing import (
     TypeVar,
 )
 
-from numpy import int32, int64, float32, float64, ndarray  # type: ignore
+from numpy import int32, int64, float32, float64, ndarray  # type: ignore[import]
 
 from pyspark._typing import SupportsOrdering
 import pyspark.context
@@ -25,7 +25,7 @@ from pyspark.statcounter import StatCounter
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.types import StructType
 from pyspark.sql._typing import RowLike
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 T = TypeVar("T")
 U = TypeVar("U")

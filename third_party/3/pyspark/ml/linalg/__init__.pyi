@@ -6,7 +6,7 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple, Union
 from pyspark.ml import linalg as newlinalg
 from pyspark.sql.types import StructType, UserDefinedType
 
-from numpy import float64, ndarray  # type: ignore
+from numpy import float64, ndarray  # type: ignore[import]
 
 class VectorUDT(UserDefinedType):
     @classmethod

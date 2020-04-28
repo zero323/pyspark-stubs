@@ -7,7 +7,7 @@ from pyspark.storagelevel import StorageLevel
 from pyspark.mllib.common import JavaModelWrapper
 from pyspark.mllib.linalg import Vector, Matrix, QRDecomposition
 from pyspark.mllib.stat import MultivariateStatisticalSummary
-from numpy import ndarray  # type: ignore
+from numpy import ndarray  # type: ignore[import]
 
 VectorLike = Union[Vector, Sequence[Union[float, int]]]
 

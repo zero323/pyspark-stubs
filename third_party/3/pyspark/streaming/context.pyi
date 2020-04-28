@@ -3,7 +3,7 @@
 
 from typing import Any, Callable, List, Optional, TypeVar, Union
 
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 from pyspark.context import SparkContext
 from pyspark.rdd import RDD

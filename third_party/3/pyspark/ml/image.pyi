@@ -6,7 +6,7 @@ from typing import Any, Dict, List
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.types import Row, StructType
 
-from numpy import ndarray  # type: ignore
+from numpy import ndarray  # type: ignore[import]
 
 class _ImageSchema:
     def __init__(self) -> None: ...
