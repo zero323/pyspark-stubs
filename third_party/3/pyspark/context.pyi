@@ -3,7 +3,7 @@
 
 from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple, TypeVar
 
-from py4j.java_gateway import JavaGateway, JavaObject  # type: ignore
+from py4j.java_gateway import JavaGateway, JavaObject  # type: ignore[import]
 
 from pyspark.accumulators import Accumulator, AccumulatorParam
 from pyspark.broadcast import Broadcast

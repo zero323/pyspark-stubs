@@ -1,8 +1,6 @@
-# Stubs for pyspark.mllib.classification (Python 3.5)
-#
-
 from typing import overload
 from typing import Any, Optional, Union
+
 from pyspark.context import SparkContext
 from pyspark.rdd import RDD
 from pyspark.mllib._typing import VectorLike
@@ -10,7 +8,8 @@ from pyspark.mllib.linalg import Vector
 from pyspark.mllib.regression import LabeledPoint, LinearModel, StreamingLinearAlgorithm
 from pyspark.mllib.util import Saveable, Loader
 from pyspark.streaming.dstream import DStream
-from numpy import float64, ndarray  # type: ignore
+
+from numpy import float64, ndarray  # type: ignore[import]
 
 class LinearClassificationModel(LinearModel):
     def __init__(self, weights: Vector, intercept: float) -> None: ...

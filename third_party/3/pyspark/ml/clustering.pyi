@@ -10,7 +10,7 @@ from pyspark.ml.param.shared import *
 from pyspark.ml.stat import MultivariateGaussian
 from pyspark.sql.dataframe import DataFrame
 
-from numpy import ndarray  # type: ignore
+from numpy import ndarray  # type: ignore[import]
 
 class ClusteringSummary(JavaWrapper):
     @property

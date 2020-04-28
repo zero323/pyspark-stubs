@@ -8,7 +8,7 @@ from pyspark.sql._typing import LiteralType, DecimalLiteral, DateTimeLiteral
 from pyspark.sql.types import *
 from pyspark.sql.window import WindowSpec
 
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 class Column:
     def __init__(self, JavaObject) -> None: ...
@@ -29,8 +29,8 @@ class Column:
     def __rmod__(self, other: Union[bool, int, float, DecimalLiteral]) -> Column: ...
     def __pow__(self, other: Union[Column, LiteralType, DecimalLiteral]) -> Column: ...
     def __rpow__(self, other: Union[LiteralType, DecimalLiteral]) -> Column: ...
-    def __eq__(self, other: Union[Column, LiteralType, DateTimeLiteral, DecimalLiteral]) -> Column: ...  # type: ignore
-    def __ne__(self, other: Any) -> Column: ...  # type: ignore
+    def __eq__(self, other: Union[Column, LiteralType, DateTimeLiteral, DecimalLiteral]) -> Column: ...  # type: ignore[override]
+    def __ne__(self, other: Any) -> Column: ...  # type: ignore[override]
     def __lt__(
         self, other: Union[Column, LiteralType, DateTimeLiteral, DecimalLiteral]
     ) -> Column: ...
