@@ -12,7 +12,7 @@ from typing import (
 )
 
 import pandas.core.frame  # type: ignore
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 from pyspark.sql._typing import ColumnOrName, LiteralType
 from pyspark.sql.pandas._typing import MapIterPandasUserDefinedFunction

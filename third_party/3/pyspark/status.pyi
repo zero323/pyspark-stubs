@@ -2,7 +2,7 @@
 #
 
 from typing import Any, List, NamedTuple, Optional
-from py4j.java_gateway import JavaArray, JavaObject  # type: ignore
+from py4j.java_gateway import JavaArray, JavaObject  # type: ignore[import]
 
 class SparkJobInfo(NamedTuple):
     jobId: int

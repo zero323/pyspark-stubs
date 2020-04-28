@@ -8,7 +8,7 @@ from pyspark.sql._typing import LiteralType, DecimalLiteral, DateTimeLiteral
 from pyspark.sql.types import *
 from pyspark.sql.window import WindowSpec
 
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 class Column:
     def __init__(self, JavaObject) -> None: ...

@@ -34,7 +34,7 @@ from pyspark.statcounter import StatCounter
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.types import StructType
 from pyspark.sql._typing import RowLike
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 T = TypeVar("T")
 U = TypeVar("U")
