@@ -11,7 +11,7 @@ from typing import (
     Union,
 )
 
-import pandas.core.frame  # type: ignore
+import pandas.core.frame  # type: ignore[import]
 from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 from pyspark.sql._typing import ColumnOrName, LiteralType
