@@ -21,8 +21,8 @@ import pyspark.sql.types
 from pyspark.sql.column import Column
 
 from pyspark.sql.pandas._typing import DataFrameLike, SeriesLike
-import pandas.core.frame  # type: ignore
-import pandas.core.series  # type: ignore
+import pandas.core.frame  # type: ignore[import]
+import pandas.core.series  # type: ignore[import]
 
 ColumnOrName = Union[pyspark.sql.column.Column, str]
 DecimalLiteral = decimal.Decimal

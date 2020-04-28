@@ -3,6 +3,7 @@
 
 from typing import overload
 from typing import Any, Iterable, Hashable, List, Tuple
+
 from pyspark.mllib._typing import VectorLike
 from pyspark.context import SparkContext
 from pyspark.rdd import RDD
@@ -10,7 +11,8 @@ from pyspark.mllib.common import JavaModelWrapper
 from pyspark.mllib.linalg import Vector
 from pyspark.mllib.regression import LabeledPoint
 from pyspark.mllib.util import JavaLoader, JavaSaveable
-from py4j.java_collections import JavaMap  # type: ignore
+
+from py4j.java_collections import JavaMap  # type: ignore[import]
 
 class VectorTransformer:
     @overload

@@ -4,7 +4,7 @@
 from typing import overload
 from typing import Any, Iterable, List, Optional, Tuple, TypeVar, Union
 
-from py4j.java_gateway import JavaObject  # type: ignore
+from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 from pyspark.sql._typing import DateTimeLiteral, LiteralType, DecimalLiteral, RowLike
 from pyspark.sql.pandas._typing import DataFrameLike
