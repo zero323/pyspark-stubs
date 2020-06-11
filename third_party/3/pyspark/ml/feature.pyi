@@ -1381,7 +1381,7 @@ class RFormulaModel(
     JavaModel, _RFormulaParams, JavaMLReadable[RFormulaModel], JavaMLWritable
 ): ...
 
-class _ChiSqSelectorParams(HasFeaturesCol, HasOutputCol, HasLabelCol):
+class _SelectorParams(HasFeaturesCol, HasOutputCol, HasLabelCol):
     selectorType: Param[str]
     numTopFeatures: Param[int]
     percentile: Param[float]
@@ -1395,11 +1395,57 @@ class _ChiSqSelectorParams(HasFeaturesCol, HasOutputCol, HasLabelCol):
     def getFdr(self) -> float: ...
     def getFwe(self) -> float: ...
 
+class _Selector(JavaEstimator[JM], _SelectorParams, JavaMLReadable, JavaMLWritable):
+    def setSelectorType(self: P, value: str) -> P: ...
+    def setNumTopFeatures(self: P, value: int) -> P: ...
+    def setPercentile(self: P, value: float) -> P: ...
+    def setFpr(self: P, value: float) -> P: ...
+    def setFdr(self: P, value: float) -> P: ...
+    def setFwe(self: P, value: float) -> P: ...
+    def setFeaturesCol(self: P, value: str) -> P: ...
+    def setOutputCol(self: P, value: str) -> P: ...
+    def setLabelCol(self: P, value: str) -> P: ...
+
+class _SelectorModel(JavaModel, _SelectorParams):
+    def setFeaturesCol(self: P, value: str) -> P: ...
+    def setOutputCol(self: P, value: str) -> P: ...
+    @property
+    def selectedFeatures(self) -> List[int]: ...
+
+class ANOVASelector(
+    _Selector[ANOVASelectorModel], JavaMLReadable[ANOVASelector], JavaMLWritable
+):
+    def __init__(
+        self,
+        numTopFeatures: int = ...,
+        featuresCol: str = ...,
+        outputCol: Optional[str] = ...,
+        labelCol: str = ...,
+        selectorType: str = ...,
+        percentile: float = ...,
+        fpr: float = ...,
+        fdr: float = ...,
+        fwe: float = ...,
+    ) -> None: ...
+    def setParams(
+        self,
+        numTopFeatures: int = ...,
+        featuresCol: str = ...,
+        outputCol: Optional[str] = ...,
+        labelCol: str = ...,
+        selectorType: str = ...,
+        percentile: float = ...,
+        fpr: float = ...,
+        fdr: float = ...,
+        fwe: float = ...,
+    ) -> ANOVASelector: ...
+
+class ANOVASelectorModel(
+    _SelectorModel, JavaMLReadable[ANOVASelectorModel], JavaMLWritable
+): ...
+
 class ChiSqSelector(
-    JavaEstimator[ChiSqSelectorModel],
-    _ChiSqSelectorParams,
-    JavaMLReadable[ChiSqSelector],
-    JavaMLWritable,
+    _Selector[ChiSqSelectorModel], JavaMLReadable[ChiSqSelector], JavaMLWritable,
 ):
     def __init__(
         self,
@@ -1438,7 +1484,7 @@ class ChiSqSelector(
     def setLabelCol(self, value: str) -> ChiSqSelector: ...
 
 class ChiSqSelectorModel(
-    JavaModel, _ChiSqSelectorParams, JavaMLReadable[ChiSqSelectorModel], JavaMLWritable
+    _SelectorModel, JavaMLReadable[ChiSqSelectorModel], JavaMLWritable
 ):
     def setFeaturesCol(self, value: str) -> ChiSqSelectorModel: ...
     def setOutputCol(self, value: str) -> ChiSqSelectorModel: ...
@@ -1472,6 +1518,38 @@ class VectorSizeHint(
     def getSize(self) -> int: ...
     def setInputCol(self, value: str) -> VectorSizeHint: ...
     def setHandleInvalid(self, value: str) -> VectorSizeHint: ...
+
+class FValueSelector(
+    _Selector[FValueSelectorModel], JavaMLReadable[FValueSelector], JavaMLWritable
+):
+    def __init__(
+        self,
+        numTopFeatures: int = ...,
+        featuresCol: str = ...,
+        outputCol: Optional[str] = ...,
+        labelCol: str = ...,
+        selectorType: str = ...,
+        percentile: float = ...,
+        fpr: float = ...,
+        fdr: float = ...,
+        fwe: float = ...,
+    ) -> None: ...
+    def setParams(
+        self,
+        numTopFeatures: int = ...,
+        featuresCol: str = ...,
+        outputCol: Optional[str] = ...,
+        labelCol: str = ...,
+        selectorType: str = ...,
+        percentile: float = ...,
+        fpr: float = ...,
+        fdr: float = ...,
+        fwe: float = ...,
+    ) -> FValueSelector: ...
+
+class FValueSelectorModel(
+    _SelectorModel, JavaMLReadable[FValueSelectorModel], JavaMLWritable
+): ...
 
 class _VarianceThresholdSelectorParams(HasFeaturesCol, HasOutputCol):
     varianceThreshold: Param[float] = ...
