@@ -27,7 +27,7 @@ from pyspark.taskcontext import (
 )
 
 # Compatiblity imports
-from pyspark.sql import SQLContext, Row
+from pyspark.sql import SQLContext, HiveContext, Row
 
 T = TypeVar("T")
 
