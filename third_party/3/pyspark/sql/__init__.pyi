@@ -6,6 +6,7 @@ from pyspark.sql.types import Row as Row
 from pyspark.sql.context import (
     SQLContext as SQLContext,
     UDFRegistration as UDFRegistration,
+    HiveContext as HiveContext,
 )
 from pyspark.sql.session import SparkSession as SparkSession
 from pyspark.sql.column import Column as Column
