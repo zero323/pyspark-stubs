@@ -1,0 +1,17 @@
+diff --git a/examples/src/main/python/ml/fm_regressor_example.py b/examples/src/main/python/ml/fm_regressor_example.py
+index 5c81339..bb6e7cf 100644
+--- a/examples/src/main/python/ml/fm_regressor_example.py
++++ b/examples/src/main/python/ml/fm_regressor_example.py
+@@ -64,9 +64,9 @@ if __name__ == "__main__":
+     print("Root Mean Squared Error (RMSE) on test data = %g" % rmse)
+ 
+     fmModel = model.stages[1]
+-    print("Factors: " + str(fmModel.factors))
+-    print("Linear: " + str(fmModel.linear))
+-    print("Intercept: " + str(fmModel.intercept))
++    print("Factors: " + str(fmModel.factors))  # type: ignore[union-attr]
++    print("Linear: " + str(fmModel.linear))  # type: ignore[union-attr]
++    print("Intercept: " + str(fmModel.intercept))  # type: ignore[union-attr]
+     # $example off$
+ 
+     spark.stop()
