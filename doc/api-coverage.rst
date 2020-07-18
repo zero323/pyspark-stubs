@@ -114,9 +114,11 @@ API Coverage
 +------------------------------------------------+---------------------+--------------------+------------+
 | `pyspark.profiler`_                            | ✘                   | ✔                  |            |
 +------------------------------------------------+---------------------+--------------------+------------+
-| `pyspark.resourceinformation`_                 | ✘                   | ✔                  |            |
+| `pyspark.resource`_                            | ✔                   | ✘                  |            |
 +------------------------------------------------+---------------------+--------------------+------------+
 | `pyspark.rdd`_                                 | ✘                   | ✔                  |            |
++------------------------------------------------+---------------------+--------------------+------------+
+| `pyspark.rddsampler`_                          | ✘                   | ✔                  |            |
 +------------------------------------------------+---------------------+--------------------+------------+
 | `pyspark.rddsampler`_                          | ✘                   | ✔                  |            |
 +------------------------------------------------+---------------------+--------------------+------------+
@@ -267,6 +269,7 @@ API Coverage
 .. _pyspark.resourceinformation: ../third_party/3/pyspark/resourceinformation.pyi
 .. _pyspark.rdd: ../third_party/3/pyspark/rdd.pyi
 .. _pyspark.rddsampler: ../third_party/3/pyspark/rddsampler.pyi
+.. _pyspark.resource: ../third_party/3/pyspark/resource.pyi
 .. _pyspark.resultiterable: ../third_party/3/pyspark/resultiterable.pyi
 .. _pyspark.serializers: ../third_party/3/pyspark/serializers.pyi
 .. _pyspark.sql: ../third_party/3/pyspark/sql/__init__.pyi
