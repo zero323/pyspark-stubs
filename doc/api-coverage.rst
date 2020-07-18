@@ -122,6 +122,14 @@ API Coverage
 +------------------------------------------------+---------------------+--------------------+------------+
 | `pyspark.resultiterable`_                      | ✘                   | ✔                  |            |
 +------------------------------------------------+---------------------+--------------------+------------+
+| `pyspark.resource`_                            | ✔                   | ✘                  |            |
++------------------------------------------------+---------------------+--------------------+------------+
+| `pyspark.resource.information`_                | ✔                   | ✘                  |            |
++------------------------------------------------+---------------------+--------------------+------------+
+| `pyspark.resource.profile`_                    | ✔                   | ✘                  |            |
++------------------------------------------------+---------------------+--------------------+------------+
+| `pyspark.resource.requests`_                   | ✔                   | ✘                  |            |
++------------------------------------------------+---------------------+--------------------+------------+
 | `pyspark.serializers`_                         | ✔                   | ✘                  |            |
 +------------------------------------------------+---------------------+--------------------+------------+
 | pyspark.shell                                  | ✔                   | ✘                  | Internal   |
@@ -267,6 +275,10 @@ API Coverage
 .. _pyspark.resourceinformation: ../third_party/3/pyspark/resourceinformation.pyi
 .. _pyspark.rdd: ../third_party/3/pyspark/rdd.pyi
 .. _pyspark.rddsampler: ../third_party/3/pyspark/rddsampler.pyi
+.. _pyspark.resource: ../third_party/3/pyspark/resource/__init__.pyi
+.. _pyspark.resource.information: ../third_party/3/pyspark/resource/information.pyi
+.. _pyspark.resource.profile: ../third_party/3/pyspark/resource/profile.pyi
+.. _pyspark.resource.requests: ../third_party/3/pyspark/resource/requests.pyi
 .. _pyspark.resultiterable: ../third_party/3/pyspark/resultiterable.pyi
 .. _pyspark.serializers: ../third_party/3/pyspark/serializers.pyi
 .. _pyspark.sql: ../third_party/3/pyspark/sql/__init__.pyi
