@@ -658,7 +658,7 @@ class OneHotEncoder(
         *,
         handleInvalid: str = ...,
         dropLast: bool = ...,
-        inputCol: Optional[List[str]] = ...,
+        inputCol: Optional[str] = ...,
         outputCol: Optional[str] = ...
     ) -> None: ...
     @overload
@@ -676,7 +676,7 @@ class OneHotEncoder(
         *,
         handleInvalid: str = ...,
         dropLast: bool = ...,
-        inputCol: Optional[List[str]] = ...,
+        inputCol: Optional[str] = ...,
         outputCol: Optional[str] = ...
     ) -> OneHotEncoder: ...
     def setDropLast(self, value: bool) -> OneHotEncoder: ...
