@@ -29,7 +29,7 @@ DateTimeLiteral = Union[datetime.datetime, datetime.date]
 LiteralType = PrimitiveType
 AtomicDataTypeOrString = Union[pyspark.sql.types.AtomicType, str]
 DataTypeOrString = Union[pyspark.sql.types.DataType, str]
-ReadWriterOptionType = Optional[PrimitiveType]
+OptionalPrimitiveType = Optional[PrimitiveType]
 
 RowLike = TypeVar("RowLike", List[Any], Tuple[Any, ...], pyspark.sql.types.Row)
 
