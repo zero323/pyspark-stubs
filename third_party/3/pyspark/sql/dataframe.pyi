@@ -14,7 +14,7 @@ from typing import (
 import pandas.core.frame  # type: ignore[import]
 from py4j.java_gateway import JavaObject  # type: ignore[import]
 
-from pyspark.sql._typing import ColumnOrName, LiteralType
+from pyspark.sql._typing import ColumnOrName, LiteralType, OptionalPrimitiveType
 from pyspark.sql.pandas._typing import MapIterPandasUserDefinedFunction
 from pyspark.sql.types import *
 from pyspark.sql.context import SQLContext
@@ -188,27 +188,27 @@ class DataFrame(PandasMapOpsMixin, PandasConversionMixin):
     def replace(
         self,
         to_replace: LiteralType,
-        value: LiteralType,
+        value: OptionalPrimitiveType,
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     @overload
     def replace(
         self,
         to_replace: List[LiteralType],
-        value: List[LiteralType],
+        value: List[OptionalPrimitiveType],
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     @overload
     def replace(
         self,
-        to_replace: Dict[LiteralType, LiteralType],
+        to_replace: Dict[LiteralType, OptionalPrimitiveType],
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     @overload
     def replace(
         self,
         to_replace: List[LiteralType],
-        value: LiteralType,
+        value: OptionalPrimitiveType,
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     def approxQuantile(
@@ -254,27 +254,27 @@ class DataFrameNaFunctions:
     def replace(
         self,
         to_replace: LiteralType,
-        value: LiteralType,
+        value: OptionalPrimitiveType,
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     @overload
     def replace(
         self,
         to_replace: List[LiteralType],
-        value: List[LiteralType],
+        value: List[OptionalPrimitiveType],
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     @overload
     def replace(
         self,
-        to_replace: Dict[LiteralType, LiteralType],
+        to_replace: Dict[LiteralType, OptionalPrimitiveType],
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
     @overload
     def replace(
         self,
         to_replace: List[LiteralType],
-        value: LiteralType,
+        value: OptionalPrimitiveType,
         subset: Optional[List[str]] = ...,
     ) -> DataFrame: ...
 
