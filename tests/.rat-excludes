@@ -1,0 +1,10 @@
+.gitignore
+.flake8
+test-data/*
+.travis.yml
+mypy.ini
+pytest.ini
+requirements-tests-py3.txt
+build/*
+tests/*
+spark-source/*
