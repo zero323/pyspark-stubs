@@ -17,6 +17,7 @@ script:
 - MYPY_TEST_PREFIX=$PWD MYPYPATH=$PWD/third_party/3 pytest
 - MYPYPATH=$PWD/third_party/3 mypy spark-source/examples/src/main/python/ml spark-source/examples/src/main/python/sql spark-source/examples/src/main/python/sql/streaming
 - black --check $PWD/third_party/3/pyspark
+- tests/check-license
 deploy:
   provider: pypi
   user: __token__
