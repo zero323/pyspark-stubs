@@ -19,7 +19,7 @@
 # Stubs for pyspark (Python 3)
 #
 
-from typing import Callable, TypeVar
+from typing import Callable, Optional, TypeVar
 
 from pyspark.status import *
 from pyspark.accumulators import (
@@ -45,11 +45,16 @@ from pyspark.taskcontext import (
 )
 
 # Compatiblity imports
-from pyspark.sql import SQLContext, HiveContext, Row
+from pyspark.sql import SQLContext as SQLContext, HiveContext as HiveContext, Row as Row
 
 T = TypeVar("T")
+F = TypeVar("F", bound=Callable)
 
 def since(version: str) -> Callable[[T], T]: ...
+
+def copy_func(f: F, name: Optional[str] = ..., sinceversion: Optional[str] = ..., doc: Optional[str] = ...) -> F: ...
+
+def keyword_only(func: F) -> F: ...
 
 # Names in __all__ with no definition:
 #   SparkJobInfo
