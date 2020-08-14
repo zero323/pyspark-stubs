@@ -3,6 +3,7 @@ from mypy.test.testcheck import TypeCheckSuite
 
 
 TypeCheckSuite.files = [
+    "core.test",
     "core-context.test",
     "core-resultiterable.test",
     "core-rdd.test",
