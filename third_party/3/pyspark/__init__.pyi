@@ -1,5 +1,7 @@
-# Stubs for pyspark (Python 3.5)
+# Stubs for pyspark (Python 3)
 #
+
+from typing import Callable, Optional, TypeVar
 
 from pyspark.conf import SparkConf as SparkConf
 from pyspark.context import SparkContext as SparkContext
@@ -19,7 +21,17 @@ from pyspark.status import *
 from pyspark.profiler import Profiler as Profiler, BasicProfiler as BasicProfiler
 
 # Compatiblity imports
-from pyspark.sql import SQLContext, HiveContext, Row
+from pyspark.sql import SQLContext as SQLContext, HiveContext as HiveContext, Row as Row
+
+T = TypeVar("T")
+F = TypeVar("F", bound=Callable)
+
+def since(version: str) -> Callable[[T], T]: ...
+
+def copy_func(f: F, name: Optional[str] = ..., sinceversion: Optional[str] = ..., doc: Optional[str] = ...) -> F: ...
+
+def keyword_only(func: F) -> F: ...
+
 
 # Names in __all__ with no definition:
 #   SparkJobInfo
