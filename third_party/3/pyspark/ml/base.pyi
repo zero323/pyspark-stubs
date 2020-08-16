@@ -16,7 +16,6 @@
 # specific language governing permissions and limitations
 # under the License.
 
-import abc
 from typing import overload
 from typing import (
     Any,
@@ -30,16 +29,23 @@ from typing import (
     Type,
     TypeVar,
 )
-from pyspark.ml._typing import M
+from pyspark.ml._typing import M, P, T, ParamMap
 
 import _thread
 
-from pyspark.ml._typing import M, ParamMap
+import abc
+from abc import abstractmethod
+from pyspark.ml.common import inherit_doc as inherit_doc
 from pyspark.ml.param import Params, Param
-from pyspark.ml.param.shared import HasInputCol, HasOutputCol
+from pyspark.ml.param.shared import *
 from pyspark.sql.column import Column
 from pyspark.sql.dataframe import DataFrame
-from pyspark.sql.types import DataType, StructType
+from pyspark.sql.functions import udf as udf
+from pyspark.sql.types import (
+    DataType,
+    StructField as StructField,
+    StructType as StructType,
+)
 
 class _FitMultipleIterator:
     fitSingleModel: Callable[[int], Transformer]
@@ -53,7 +59,7 @@ class _FitMultipleIterator:
     def __next__(self) -> Tuple[int, Transformer]: ...
     def next(self) -> Tuple[int, Transformer]: ...
 
-class Estimator(Params, Generic[M]):
+class Estimator(Generic[M], Params, metaclass=abc.ABCMeta):
     __metaclass__: Type[abc.ABCMeta]
     @overload
     def fit(self, dataset: DataFrame, params: Optional[ParamMap] = ...) -> M: ...
@@ -63,19 +69,37 @@ class Estimator(Params, Generic[M]):
         self, dataset: DataFrame, params: List[ParamMap]
     ) -> Iterable[Tuple[int, M]]: ...
 
-class Transformer(Params):
+class Transformer(Params, metaclass=abc.ABCMeta):
     __metaclass__: Type[abc.ABCMeta]
     def transform(
         self, dataset: DataFrame, params: Optional[ParamMap] = ...
     ) -> DataFrame: ...
 
-class Model(Transformer):
+class Model(Transformer, metaclass=abc.ABCMeta):
     __metaclass__: Type[abc.ABCMeta]
 
-class UnaryTransformer(HasInputCol, HasOutputCol, Transformer):
+class UnaryTransformer(HasInputCol, HasOutputCol, Transformer, metaclass=abc.ABCMeta):
     def createTransformFunc(self) -> Callable: ...
     def outputDataType(self) -> DataType: ...
     def validateInputType(self, inputType: DataType) -> None: ...
     def transformSchema(self, schema: StructType) -> StructType: ...
     def setInputCol(self: M, value: str) -> M: ...
     def setOutputCol(self: M, value: str) -> M: ...
+
+class _PredictorParams(HasLabelCol, HasFeaturesCol, HasPredictionCol): ...
+
+class Predictor(Estimator[M], _PredictorParams, metaclass=abc.ABCMeta):
+    __metaclass__: Type[abc.ABCMeta]
+    def setLabelCol(self: P, value: str) -> P: ...
+    def setFeaturesCol(self: P, value: str) -> P: ...
+    def setPredictionCol(self: P, value: str) -> P: ...
+
+class PredictionModel(Generic[T], Model, _PredictorParams, metaclass=abc.ABCMeta):
+    __metaclass__: Type[abc.ABCMeta]
+    def setFeaturesCol(self: M, value: str) -> M: ...
+    def setPredictionCol(self: M, value: str) -> M: ...
+    @property
+    @abc.abstractmethod
+    def numFeatures(self) -> int: ...
+    @abstractmethod
+    def predict(self, value: T) -> float: ...
