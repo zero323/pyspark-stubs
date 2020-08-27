@@ -51,9 +51,12 @@ T = TypeVar("T")
 F = TypeVar("F", bound=Callable)
 
 def since(version: str) -> Callable[[T], T]: ...
-
-def copy_func(f: F, name: Optional[str] = ..., sinceversion: Optional[str] = ..., doc: Optional[str] = ...) -> F: ...
-
+def copy_func(
+    f: F,
+    name: Optional[str] = ...,
+    sinceversion: Optional[str] = ...,
+    doc: Optional[str] = ...,
+) -> F: ...
 def keyword_only(func: F) -> F: ...
 
 # Names in __all__ with no definition:

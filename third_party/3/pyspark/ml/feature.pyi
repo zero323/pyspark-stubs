@@ -1463,7 +1463,9 @@ class ANOVASelectorModel(
 ): ...
 
 class ChiSqSelector(
-    _Selector[ChiSqSelectorModel], JavaMLReadable[ChiSqSelector], JavaMLWritable,
+    _Selector[ChiSqSelectorModel],
+    JavaMLReadable[ChiSqSelector],
+    JavaMLWritable,
 ):
     def __init__(
         self,

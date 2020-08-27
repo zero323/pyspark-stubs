@@ -49,7 +49,6 @@ from pyspark.ml.wrapper import (
 )
 from pyspark.sql.dataframe import DataFrame
 
-
 class _ClassifierParams(HasRawPredictionCol, _PredictorParams): ...
 
 class Classifier(Predictor, _ClassifierParams):
@@ -65,14 +64,18 @@ class ClassificationModel(PredictionModel, _ClassifierParams, metaclass=abc.ABCM
     @abstractmethod
     def predictRaw(self, value: Vector) -> Vector: ...
 
-class _ProbabilisticClassifierParams(HasProbabilityCol, HasThresholds, _ClassifierParams): ...
+class _ProbabilisticClassifierParams(
+    HasProbabilityCol, HasThresholds, _ClassifierParams
+): ...
 
 class ProbabilisticClassifier(Classifier, _ProbabilisticClassifierParams):
     __metaclass__: Type[abc.ABCMeta]
     def setProbabilityCol(self: P, value: str) -> P: ...
     def setThresholds(self: P, value: List[float]) -> P: ...
 
-class ProbabilisticClassificationModel(ClassificationModel, _ProbabilisticClassifierParams, metaclass=abc.ABCMeta):
+class ProbabilisticClassificationModel(
+    ClassificationModel, _ProbabilisticClassifierParams, metaclass=abc.ABCMeta
+):
     __metaclass__: Type[abc.ABCMeta]
     def setProbabilityCol(self: M, value: str) -> M: ...
     def setThresholds(self: M, value: List[float]) -> M: ...
@@ -95,7 +98,9 @@ class _JavaProbabilisticClassifierParams(
 class _JavaProbabilisticClassifier(ProbabilisticClassifier, _JavaClassifier[JM]):
     __metaclass__: Type[abc.ABCMeta]
 
-class _JavaProbabilisticClassificationModel(ProbabilisticClassificationModel, _JavaClassificationModel[T]):
+class _JavaProbabilisticClassificationModel(
+    ProbabilisticClassificationModel, _JavaClassificationModel[T]
+):
     def predictProbability(self, value: Any): ...
 
 class _ClassificationSummary(JavaWrapper):
@@ -348,12 +353,15 @@ class LogisticRegressionSummary(_ClassificationSummary):
     @property
     def featuresCol(self) -> str: ...
 
-class LogisticRegressionTrainingSummary(LogisticRegressionSummary, _TrainingSummary): ...
-
-class BinaryLogisticRegressionSummary(_BinaryClassificationSummary, LogisticRegressionSummary): ...
-
-class BinaryLogisticRegressionTrainingSummary(BinaryLogisticRegressionSummary, LogisticRegressionTrainingSummary): ...
-
+class LogisticRegressionTrainingSummary(
+    LogisticRegressionSummary, _TrainingSummary
+): ...
+class BinaryLogisticRegressionSummary(
+    _BinaryClassificationSummary, LogisticRegressionSummary
+): ...
+class BinaryLogisticRegressionTrainingSummary(
+    BinaryLogisticRegressionSummary, LogisticRegressionTrainingSummary
+): ...
 class _DecisionTreeClassifierParams(_DecisionTreeParams, _TreeClassifierParams): ...
 
 class DecisionTreeClassifier(
@@ -861,7 +869,6 @@ class FMClassificationModel(
     def linear(self) -> Vector: ...
     @property
     def factors(self) -> Matrix: ...
-
     def summary(self) -> FMClassificationTrainingSummary: ...
     def evaluate(self, dataset: DataFrame) -> FMClassificationSummary: ...
 
