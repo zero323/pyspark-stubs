@@ -16,11 +16,21 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from pyspark.resource.requests import ExecutorResourceRequest as ExecutorResourceRequest, ExecutorResourceRequests as ExecutorResourceRequests, TaskResourceRequest as TaskResourceRequest, TaskResourceRequests as TaskResourceRequests
+from pyspark.resource.requests import (
+    ExecutorResourceRequest as ExecutorResourceRequest,
+    ExecutorResourceRequests as ExecutorResourceRequests,
+    TaskResourceRequest as TaskResourceRequest,
+    TaskResourceRequests as TaskResourceRequests,
+)
 from typing import Any, Optional
 
 class ResourceProfile:
-    def __init__(self, _java_resource_profile: Optional[Any] = ..., _exec_req: Any = ..., _task_req: Any = ...) -> None: ...
+    def __init__(
+        self,
+        _java_resource_profile: Optional[Any] = ...,
+        _exec_req: Any = ...,
+        _task_req: Any = ...,
+    ) -> None: ...
     @property
     def id(self): ...
     @property
