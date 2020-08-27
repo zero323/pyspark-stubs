@@ -16,13 +16,12 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.broadcast (Python 3.5)
-#
-
 import threading
-from typing import Any, Generic, Optional, TypeVar
+from typing import Any, Generic, Optional, TypeVar, Dict
 
 T = TypeVar("T")
+
+_broadcastRegistry: Dict
 
 class Broadcast(Generic[T]):
     def __init__(
@@ -47,3 +46,6 @@ class BroadcastPickleRegistry(threading.local):
     def __iter__(self) -> None: ...
     def add(self, bcast: Any) -> None: ...
     def clear(self) -> None: ...
+
+class InheritableThread:
+    def __init__(self) -> None: ...

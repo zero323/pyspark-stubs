@@ -19,7 +19,7 @@
 # Stubs for pyspark.accumulators (Python 3.7)
 #
 
-from typing import Callable, Generic, Tuple, Type, TypeVar
+from typing import Callable, Generic, Tuple, Type, TypeVar, Dict
 
 import socketserver.BaseRequestHandler  # type: ignore
 
@@ -29,7 +29,8 @@ T = TypeVar("T")
 U = TypeVar("U", bound=SupportsIAdd)
 
 import socketserver as SocketServer
-from typing import Any
+
+_accumulatorRegistry: Dict = {}
 
 class Accumulator(Generic[T]):
     aid: int
