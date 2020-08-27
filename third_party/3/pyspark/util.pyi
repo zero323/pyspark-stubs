@@ -17,7 +17,7 @@
 # under the License.
 #
 
-from typing import Any, Callable
+from typing import Any, Callable, Tuple
 from pyspark._typing import F
 
 import threading
@@ -26,7 +26,7 @@ def print_exec(stream: Any) -> None: ...
 
 class VersionUtils:
     @staticmethod
-    def majorMinorVersion(sparkVersion: Any): ...
+    def majorMinorVersion(sparkVersion: str) -> Tuple[int, int]: ...
 
 def fail_on_stopiteration(f: F) -> F: ...
 
