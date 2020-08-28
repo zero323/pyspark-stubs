@@ -108,3 +108,15 @@ df.drop(col("id"), col("foo"))  # E: No overload variant of "drop" of "DataFrame
                                 # N:     <1 more non-matching overload not shown>
 
 [out]
+
+[case fillNullValues]
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+df = spark.createDataFrame([(1,2)], schema=("id1", "id2"))
+
+df.fillna(value=1, subset="id1")
+df.fillna(value=1, subset=("id1", "id2"))
+df.fillna(value=1, subset=["id1"])
+
+[out]
