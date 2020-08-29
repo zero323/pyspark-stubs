@@ -3,7 +3,7 @@
 
 from typing import Any, Dict, List
 from typing_extensions import Literal
-from pyspark.resourceinformation import ResourceInformation
+from pyspark.resource import ResourceInformation
 
 class TaskContext:
     def __new__(cls) -> TaskContext: ...
