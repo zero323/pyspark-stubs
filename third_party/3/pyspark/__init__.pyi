@@ -14,7 +14,7 @@ from pyspark.context import SparkContext as SparkContext
 from pyspark.files import SparkFiles as SparkFiles
 from pyspark.profiler import BasicProfiler as BasicProfiler, Profiler as Profiler
 from pyspark.rdd import RDD as RDD, RDDBarrier as RDDBarrier
-from pyspark.resourceinformation import ResourceInformation as ResourceInformation
+from pyspark.resource import ResourceInformation as ResourceInformation
 from pyspark.serializers import (
     MarshalSerializer as MarshalSerializer,
     PickleSerializer as PickleSerializer,
