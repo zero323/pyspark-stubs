@@ -18,6 +18,9 @@ T = TypeVar("T")
 U = TypeVar("U")
 
 class SparkContext:
+    master: str
+    appName: str
+    sparkHome: str
     PACKAGE_EXTENSIONS: Iterable[str]
     def __init__(
         self,
@@ -156,5 +159,3 @@ class SparkContext:
     def getConf(self) -> SparkConf: ...
     @property
     def resources(self) -> Dict[str, ResourceInformation]: ...
-    @property
-    def appName(self) -> str: ...
