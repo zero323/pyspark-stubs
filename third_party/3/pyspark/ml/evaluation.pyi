@@ -219,6 +219,7 @@ class ClusteringEvaluator(
     JavaEvaluator,
     HasPredictionCol,
     HasFeaturesCol,
+    HasWeightCol,
     JavaMLReadable[ClusteringEvaluator],
     JavaMLWritable,
 ):
@@ -230,7 +231,8 @@ class ClusteringEvaluator(
         predictionCol: str = ...,
         featuresCol: str = ...,
         metricName: ClusteringEvaluatorMetricType = ...,
-        distanceMeasure: str = ...
+        distanceMeasure: str = ...,
+        weightCol: Optional[str] = ...
     ) -> None: ...
     def setParams(
         self,
@@ -238,7 +240,8 @@ class ClusteringEvaluator(
         predictionCol: str = ...,
         featuresCol: str = ...,
         metricName: ClusteringEvaluatorMetricType = ...,
-        distanceMeasure: str = ...
+        distanceMeasure: str = ...,
+        weightCol: Optional[str] = ...
     ) -> ClusteringEvaluator: ...
     def setMetricName(
         self, value: ClusteringEvaluatorMetricType
@@ -248,6 +251,7 @@ class ClusteringEvaluator(
     def getDistanceMeasure(self) -> str: ...
     def setFeaturesCol(self, value: str) -> ClusteringEvaluator: ...
     def setPredictionCol(self, value: str) -> ClusteringEvaluator: ...
+    def setWeightCol(self, value: str) -> ClusteringEvaluator: ...
 
 class RankingEvaluator(
     JavaEvaluator,
