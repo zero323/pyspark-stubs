@@ -24,10 +24,6 @@ from pyspark.serializers import (
 )
 from typing import Any
 
-basestring = str
-unicode = str
-xrange = range
-
 class SpecialLengths:
     END_OF_DATA_SECTION: int = ...
     PYTHON_EXCEPTION_THROWN: int = ...
