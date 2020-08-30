@@ -29,10 +29,6 @@ from pyspark.sql.pandas.serializers import (
 from pyspark.sql.types import *
 from pyspark.traceback_utils import SCCallSiteSync as SCCallSiteSync
 
-basestring = str
-unicode = str
-xrange = range
-
 class PandasConversionMixin:
     def toPandas(self) -> DataFrameLike: ...
 

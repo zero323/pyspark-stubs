@@ -37,7 +37,6 @@ from pyspark.util import fail_on_stopiteration as fail_on_stopiteration
 from typing import Any
 
 has_resource_module: bool
-basestring = str
 pickleSer: Any
 utf8_deserializer: Any
 

@@ -28,10 +28,6 @@ from pyspark.sql.session import SparkSession
 S = TypeVar("S")
 R = TypeVar("R", bound=MLReadable)
 
-basestring = Type[str]
-unicode = Type[str]
-long = Type[int]
-
 class Identifiable:
     uid: str
     def __init__(self) -> None: ...
