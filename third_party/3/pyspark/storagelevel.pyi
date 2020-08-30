@@ -21,13 +21,14 @@
 from typing import Any, ClassVar
 
 class StorageLevel:
-    DISK_ONLY: ClassVar["StorageLevel"]
-    DISK_ONLY_2: ClassVar["StorageLevel"]
-    MEMORY_ONLY: ClassVar["StorageLevel"]
-    MEMORY_ONLY_2: ClassVar["StorageLevel"]
-    MEMORY_AND_DISK: ClassVar["StorageLevel"]
-    MEMORY_AND_DISK_2: ClassVar["StorageLevel"]
-    OFF_HEAP: ClassVar["StorageLevel"]
+    DISK_ONLY: ClassVar[StorageLevel]
+    DISK_ONLY_2: ClassVar[StorageLevel]
+    MEMORY_ONLY: ClassVar[StorageLevel]
+    MEMORY_ONLY_2: ClassVar[StorageLevel]
+    DISK_ONLY_3: ClassVar[StorageLevel]
+    MEMORY_AND_DISK: ClassVar[StorageLevel]
+    MEMORY_AND_DISK_2: ClassVar[StorageLevel]
+    OFF_HEAP: ClassVar[StorageLevel]
 
     useDisk: bool
     useMemory: bool
