@@ -32,7 +32,6 @@ from pyspark.context import SparkContext as SparkContext
 from pyspark.files import SparkFiles as SparkFiles
 from pyspark.profiler import BasicProfiler as BasicProfiler, Profiler as Profiler
 from pyspark.rdd import RDD as RDD, RDDBarrier as RDDBarrier
-from pyspark.resourceinformation import ResourceInformation as ResourceInformation
 from pyspark.serializers import (
     MarshalSerializer as MarshalSerializer,
     PickleSerializer as PickleSerializer,
@@ -43,6 +42,7 @@ from pyspark.taskcontext import (
     BarrierTaskInfo as BarrierTaskInfo,
     TaskContext as TaskContext,
 )
+from pyspark.util import InheritableThread as InheritableThread
 
 # Compatiblity imports
 from pyspark.sql import SQLContext as SQLContext, HiveContext as HiveContext, Row as Row

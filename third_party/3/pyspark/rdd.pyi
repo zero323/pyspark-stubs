@@ -48,6 +48,8 @@ import pyspark.context
 from pyspark.resultiterable import ResultIterable
 from pyspark.serializers import Serializer
 from pyspark.storagelevel import StorageLevel
+from pyspark.resource.requests import ExecutorResourceRequests, TaskResourceRequests
+from pyspark.resource.profile import ResourceProfile
 from pyspark.statcounter import StatCounter
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.types import StructType
@@ -431,6 +433,8 @@ class RDD(Generic[T]):
     def countApproxDistinct(self, relativeSD: float = ...) -> int: ...
     def toLocalIterator(self, prefetchPartitions: bool = ...) -> Iterator[T]: ...
     def barrier(self: RDD[T]) -> RDDBarrier[T]: ...
+    def withResources(self: RDD[T], profile: ResourceProfile) -> RDD[T]: ...
+    def getResourceProfile(self) -> Optional[ResourceProfile]: ...
     @overload
     def toDF(
         self: RDD[RowLike],

@@ -27,7 +27,7 @@ from pyspark.accumulators import Accumulator, AccumulatorParam
 from pyspark.broadcast import Broadcast
 from pyspark.conf import SparkConf
 from pyspark.profiler import Profiler
-from pyspark.resourceinformation import ResourceInformation
+from pyspark.resource.information import ResourceInformation
 from pyspark.rdd import RDD
 from pyspark.serializers import Serializer
 from pyspark.status import StatusTracker
@@ -36,6 +36,9 @@ T = TypeVar("T")
 U = TypeVar("U")
 
 class SparkContext:
+    master: str
+    appName: str
+    sparkHome: str
     PACKAGE_EXTENSIONS: Iterable[str]
     def __init__(
         self,

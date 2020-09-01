@@ -21,7 +21,7 @@ from pyspark.broadcast import Broadcast as Broadcast
 from pyspark.files import SparkFiles as SparkFiles
 from pyspark.java_gateway import local_connect_and_auth as local_connect_and_auth
 from pyspark.rdd import PythonEvalType as PythonEvalType
-from pyspark.resourceinformation import ResourceInformation as ResourceInformation
+from pyspark.resource.information import ResourceInformation
 from pyspark.serializers import BatchedSerializer as BatchedSerializer, PickleSerializer as PickleSerializer, SpecialLengths as SpecialLengths, UTF8Deserializer as UTF8Deserializer, read_bool as read_bool, read_int as read_int, read_long as read_long, write_int as write_int, write_long as write_long, write_with_length as write_with_length  # type: ignore[attr-defined]
 from pyspark.sql.pandas.serializers import (
     ArrowStreamPandasUDFSerializer as ArrowStreamPandasUDFSerializer,
@@ -37,7 +37,6 @@ from pyspark.util import fail_on_stopiteration as fail_on_stopiteration
 from typing import Any
 
 has_resource_module: bool
-basestring = str
 pickleSer: Any
 utf8_deserializer: Any
 

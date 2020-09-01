@@ -1,11 +1,11 @@
 diff --git a/examples/src/main/python/sql/arrow.py b/examples/src/main/python/sql/arrow.py
-index 1c98317..fdf2807 100644
+index 1789a54f02..9978e86014 100644
 --- a/examples/src/main/python/sql/arrow.py
 +++ b/examples/src/main/python/sql/arrow.py
 @@ -32,8 +32,8 @@ require_minimum_pyarrow_version()
  
+ 
  def dataframe_with_arrow_example(spark):
-     # $example on:dataframe_with_arrow$
 -    import numpy as np
 -    import pandas as pd
 +    import numpy as np  # type: ignore[import]

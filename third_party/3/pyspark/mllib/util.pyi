@@ -30,9 +30,6 @@ from pyspark.sql.dataframe import DataFrame
 
 T = TypeVar("T")
 
-xrange: Type[range]
-basestring: Type[str]
-
 class MLUtils:
     @staticmethod
     def loadLibSVMFile(

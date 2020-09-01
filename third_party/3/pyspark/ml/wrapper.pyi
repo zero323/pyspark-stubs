@@ -27,8 +27,6 @@ from pyspark.ml.base import _PredictorParams
 from pyspark.ml.param import Param, Params
 from pyspark.ml.param.shared import HasFeaturesCol, HasLabelCol, HasPredictionCol
 
-xrange = range
-
 class JavaWrapper:
     def __init__(self, java_obj: Optional[Any] = ...) -> None: ...
     def __del__(self) -> None: ...

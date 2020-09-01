@@ -15,11 +15,17 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-#
 
+import threading
 from typing import List, Callable, Any, Tuple
 
 __all__: List[str]
+
+def print_exec(stream: Any) -> None: ...
+
+class VersionUtils:
+    @staticmethod
+    def majorMinorVersion(sparkVersion: str) -> Tuple[int, int]: ...
 
 def fail_on_stopiteration(f: Callable) -> Callable: ...
 def _parse_memory(s: str) -> int: ...
@@ -27,9 +33,6 @@ def _print_missing_jar(
     lib_name: str, pkg_name: str, jar_name: str, spark_version: str
 ) -> None: ...
 
-class InheritableThread:
+class InheritableThread(threading.Thread):
     def __init__(self, target: Any, *args: Any, **kwargs: Any): ...
-
-class VersionUtils:
-    @staticmethod
-    def majorMinorVersion(sparkVersion: str) -> Tuple[int, int]: ...
+    def __del__(self) -> None: ...

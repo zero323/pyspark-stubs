@@ -50,6 +50,7 @@ class Catalog:
         path: Optional[str] = ...,
         source: Optional[str] = ...,
         schema: Optional[StructType] = ...,
+        description: Optional[str] = ...,
         **options: str
     ) -> DataFrame: ...
     def dropTempView(self, viewName: str) -> None: ...
