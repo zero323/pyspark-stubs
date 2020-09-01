@@ -21,7 +21,7 @@ from typing import Any, Generic, Optional, TypeVar, Dict
 
 T = TypeVar("T")
 
-_broadcastRegistry: Dict
+_broadcastRegistry: Dict[int, Broadcast]
 
 class Broadcast(Generic[T]):
     def __init__(
@@ -46,6 +46,3 @@ class BroadcastPickleRegistry(threading.local):
     def __iter__(self) -> None: ...
     def add(self, bcast: Any) -> None: ...
     def clear(self) -> None: ...
-
-class InheritableThread:
-    def __init__(self) -> None: ...

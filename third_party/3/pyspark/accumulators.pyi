@@ -30,7 +30,7 @@ U = TypeVar("U", bound=SupportsIAdd)
 
 import socketserver as SocketServer
 
-_accumulatorRegistry: Dict = {}
+_accumulatorRegistry: Dict[int, Accumulator]
 
 class Accumulator(Generic[T]):
     aid: int
