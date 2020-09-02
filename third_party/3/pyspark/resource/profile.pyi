@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from pyspark.resource.requests import (
+from pyspark.resource.requests import (  # noqa: F401
     ExecutorResourceRequest as ExecutorResourceRequest,
     ExecutorResourceRequests as ExecutorResourceRequests,
     TaskResourceRequest as TaskResourceRequest,

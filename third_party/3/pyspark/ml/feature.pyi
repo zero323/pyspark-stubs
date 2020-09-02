@@ -20,11 +20,27 @@ from typing import overload
 from typing import Any, Dict, Generic, List, Optional, Tuple
 from pyspark.ml._typing import JM, P
 
-from pyspark.ml.param.shared import *
+from pyspark.ml.param.shared import (
+    HasFeaturesCol,
+    HasHandleInvalid,
+    HasInputCol,
+    HasInputCols,
+    HasLabelCol,
+    HasMaxIter,
+    HasNumFeatures,
+    HasOutputCol,
+    HasOutputCols,
+    HasRelativeError,
+    HasSeed,
+    HasStepSize,
+    HasThreshold,
+    HasThresholds,
+)
 from pyspark.ml.util import JavaMLReadable, JavaMLWritable
 from pyspark.ml.wrapper import JavaEstimator, JavaModel, JavaParams, JavaTransformer
 from pyspark.ml.linalg import Vector, DenseVector, DenseMatrix
 from pyspark.sql.dataframe import DataFrame
+from pyspark.ml.param import Param
 
 class Binarizer(
     JavaTransformer,
