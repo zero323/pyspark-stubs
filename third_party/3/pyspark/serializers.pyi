@@ -18,10 +18,6 @@
 
 from typing import Any, Dict
 
-basestring = str
-unicode = str
-xrange = range
-
 __cls: Dict
 
 class SpecialLengths:
