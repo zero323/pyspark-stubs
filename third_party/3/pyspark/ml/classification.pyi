@@ -43,7 +43,6 @@ from pyspark.ml.util import *
 from pyspark.ml.wrapper import (
     JavaPredictionModel,
     JavaPredictor,
-    _JavaPredictorParams,
     JavaWrapper,
     JavaTransformer,
 )
@@ -90,10 +89,6 @@ class _JavaClassificationModel(ClassificationModel, JavaPredictionModel[T]):
     @property
     def numClasses(self) -> int: ...
     def predictRaw(self, value: Vector) -> Vector: ...
-
-class _JavaProbabilisticClassifierParams(
-    HasProbabilityCol, HasThresholds, _ClassifierParams
-): ...
 
 class _JavaProbabilisticClassifier(ProbabilisticClassifier, _JavaClassifier[JM]):
     __metaclass__: Type[abc.ABCMeta]
@@ -638,7 +633,7 @@ class GBTClassificationModel(
     def trees(self) -> List[DecisionTreeRegressionModel]: ...
     def evaluateEachIteration(self, dataset: DataFrame) -> List[float]: ...
 
-class _NaiveBayesParams(_JavaPredictorParams, HasWeightCol):
+class _NaiveBayesParams(_PredictorParams, HasWeightCol):
     smoothing: Param[float]
     modelType: Param[str]
     def getSmoothing(self) -> float: ...
@@ -696,7 +691,7 @@ class NaiveBayesModel(
     def sigma(self) -> Matrix: ...
 
 class _MultilayerPerceptronParams(
-    _JavaProbabilisticClassifierParams,
+    _ProbabilisticClassifierParams,
     HasSeed,
     HasMaxIter,
     HasTol,
