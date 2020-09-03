@@ -46,10 +46,8 @@ class JavaModel(JavaTransformer, Model):
     __metaclass__: Type[abc.ABCMeta]
     def __init__(self, java_model: Optional[Any] = ...) -> None: ...
 
-class _JavaPredictorParams(HasLabelCol, HasFeaturesCol, HasPredictionCol): ...
-
 class JavaPredictor(
-    Predictor[JM], JavaEstimator, _JavaPredictorParams, metaclass=abc.ABCMeta
+    Predictor[JM], JavaEstimator, _PredictorParams, metaclass=abc.ABCMeta
 ):
     __metaclass__: Type[abc.ABCMeta]
 
