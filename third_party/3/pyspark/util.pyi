@@ -17,8 +17,10 @@
 # under the License.
 #
 
-import threading
 from typing import Any, Callable
+from pyspark._typing import F
+
+import threading
 
 def print_exec(stream: Any) -> None: ...
 
@@ -26,7 +28,7 @@ class VersionUtils:
     @staticmethod
     def majorMinorVersion(sparkVersion: Any): ...
 
-def fail_on_stopiteration(f: Callable) -> Callable: ...
+def fail_on_stopiteration(f: F) -> F: ...
 
 class InheritableThread(threading.Thread):
     def __init__(self, target: Any, *args: Any, **kwargs: Any): ...
