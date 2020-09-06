@@ -1,8 +1,8 @@
 diff --git a/examples/src/main/python/ml/pipeline_example.py b/examples/src/main/python/ml/pipeline_example.py
-index e1fab7cbe6..bc3e1a9dec 100644
+index e1fab7cbe6..995bde89a1 100644
 --- a/examples/src/main/python/ml/pipeline_example.py
 +++ b/examples/src/main/python/ml/pipeline_example.py
-@@ -62,8 +62,10 @@ if __name__ == "__main__":
+@@ -62,8 +62,12 @@ if __name__ == "__main__":
      prediction = model.transform(test)
      selected = prediction.select("id", "text", "probability", "prediction")
      for row in selected.collect():
@@ -10,8 +10,10 @@ index e1fab7cbe6..bc3e1a9dec 100644
 -        print("(%d, %s) --> prob=%s, prediction=%f" % (rid, text, str(prob), prediction))
 +        rid, text, prob, prediction = row  # type: ignore[no-redef]
 +        print(
-+            "(%d, %s) --> prob=%s, prediction=%f" % (rid, text, str(prob), prediction)
-+        )  # type: ignore
++            "(%d, %s) --> prob=%s, prediction=%f" % (
++                rid, text, str(prob), prediction   # type: ignore
++            )
++        )
      # $example off$
  
      spark.stop()
