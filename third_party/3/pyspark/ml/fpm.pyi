@@ -19,7 +19,7 @@
 # Stubs for pyspark.ml.base (Python 3)
 #
 
-from typing import Optional
+from typing import Any, Optional
 
 from pyspark.ml._typing import P
 from pyspark.ml.util import *
@@ -32,6 +32,7 @@ class _FPGrowthParams(HasPredictionCol):
     minSupport: Param[float]
     numPartitions: Param[int]
     minConfidence: Param[float]
+    def __init__(self, *args: Any): ...
     def getItemsCol(self) -> str: ...
     def getMinSupport(self) -> float: ...
     def getNumPartitions(self) -> int: ...
