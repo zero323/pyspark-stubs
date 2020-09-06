@@ -37,7 +37,7 @@ from pyspark.sql.pandas._typing import MapIterPandasUserDefinedFunction
 from pyspark.sql.types import *
 from pyspark.sql.context import SQLContext
 from pyspark.sql.group import GroupedData
-from pyspark.sql.readwriter import DataFrameWriter
+from pyspark.sql.readwriter import DataFrameWriter, DataFrameWriterV2
 from pyspark.sql.streaming import DataStreamWriter
 from pyspark.sql.column import Column
 from pyspark.rdd import RDD
@@ -257,6 +257,7 @@ class DataFrame(PandasMapOpsMixin, PandasConversionMixin):
     def sameSemantics(self, other: DataFrame) -> bool: ...
     def semanticHash(self) -> int: ...
     def inputFiles(self) -> List[str]: ...
+    def writeTo(self, table: str) -> DataFrameWriterV2: ...
 
 class DataFrameNaFunctions:
     df: DataFrame
