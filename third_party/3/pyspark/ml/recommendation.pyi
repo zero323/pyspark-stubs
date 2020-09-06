@@ -16,14 +16,24 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.ml.recommendation (Python 3)
-#
-
 from typing import Any, Optional
 
-from pyspark.ml.util import *
+import sys  # noqa: F401
+
+from pyspark import since, keyword_only  # noqa: F401
+from pyspark.ml.param.shared import (
+    HasBlockSize,
+    HasCheckpointInterval,
+    HasMaxIter,
+    HasPredictionCol,
+    HasRegParam,
+    HasSeed,
+)
 from pyspark.ml.wrapper import JavaEstimator, JavaModel
-from pyspark.ml.param.shared import *
+from pyspark.ml.common import inherit_doc  # noqa: F401
+from pyspark.ml.param import Param
+from pyspark.ml.util import JavaMLWritable, JavaMLReadable
+
 from pyspark.sql.dataframe import DataFrame
 
 class _ALSModelParams(HasPredictionCol, HasBlockSize):

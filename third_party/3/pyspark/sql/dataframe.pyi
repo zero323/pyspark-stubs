@@ -25,16 +25,19 @@ from typing import (
     List,
     Optional,
     Tuple,
-    TypeVar,
     Union,
 )
 
-import pandas.core.frame  # type: ignore[import]
 from py4j.java_gateway import JavaObject  # type: ignore[import]
 
 from pyspark.sql._typing import ColumnOrName, LiteralType, OptionalPrimitiveType
-from pyspark.sql.pandas._typing import MapIterPandasUserDefinedFunction
-from pyspark.sql.types import *
+from pyspark.sql.types import (  # noqa: F401
+    StructType,
+    StructField,
+    StringType,
+    IntegerType,
+    Row,
+)  # noqa: F401
 from pyspark.sql.context import SQLContext
 from pyspark.sql.group import GroupedData
 from pyspark.sql.readwriter import DataFrameWriter, DataFrameWriterV2
