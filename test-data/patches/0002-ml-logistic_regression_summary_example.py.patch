@@ -1,5 +1,5 @@
 diff --git a/examples/src/main/python/ml/logistic_regression_summary_example.py b/examples/src/main/python/ml/logistic_regression_summary_example.py
-index 6d045108da..8ade960d39 100644
+index 6d045108da..8c3a5aa18f 100644
 --- a/examples/src/main/python/ml/logistic_regression_summary_example.py
 +++ b/examples/src/main/python/ml/logistic_regression_summary_example.py
 @@ -21,7 +21,7 @@ Run with:
@@ -11,12 +11,14 @@ index 6d045108da..8ade960d39 100644
  # $example off$
  from pyspark.sql import SparkSession
  
-@@ -42,7 +42,7 @@ if __name__ == "__main__":
+@@ -42,7 +42,9 @@ if __name__ == "__main__":
      # $example on$
      # Extract the summary from the returned LogisticRegressionModel instance trained
      # in the earlier example
 -    trainingSummary = lrModel.summary
-+    trainingSummary: BinaryLogisticRegressionTrainingSummary = lrModel.summary  # type: ignore[assignment]
++    trainingSummary: BinaryLogisticRegressionTrainingSummary = (
++        lrModel.summary
++    )  # type: ignore[assignment]
  
      # Obtain the objective per iteration
      objectiveHistory = trainingSummary.objectiveHistory

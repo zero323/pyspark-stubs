@@ -26,7 +26,7 @@ from py4j.java_gateway import JavaGateway, JavaObject  # type: ignore[import]
 from pyspark.accumulators import Accumulator, AccumulatorParam
 from pyspark.broadcast import Broadcast
 from pyspark.conf import SparkConf
-from pyspark.profiler import Profiler
+from pyspark.profiler import Profiler  # noqa: F401
 from pyspark.resource.information import ResourceInformation
 from pyspark.rdd import RDD
 from pyspark.serializers import Serializer

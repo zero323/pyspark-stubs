@@ -16,15 +16,31 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.ml.clustering (Python 3)
-#
-
 from typing import Any, List, Optional
 
 from pyspark.ml.linalg import Matrix, Vector
-from pyspark.ml.util import *
+from pyspark.ml.util import (
+    GeneralJavaMLWritable,
+    HasTrainingSummary,
+    JavaMLReadable,
+    JavaMLWritable,
+)
 from pyspark.ml.wrapper import JavaEstimator, JavaModel, JavaParams, JavaWrapper
-from pyspark.ml.param.shared import *
+from pyspark.ml.param.shared import (
+    HasAggregationDepth,
+    HasBlockSize,
+    HasCheckpointInterval,
+    HasDistanceMeasure,
+    HasFeaturesCol,
+    HasMaxIter,
+    HasPredictionCol,
+    HasProbabilityCol,
+    HasSeed,
+    HasTol,
+    HasWeightCol,
+)
+
+from pyspark.ml.param import Param
 from pyspark.ml.stat import MultivariateGaussian
 from pyspark.sql.dataframe import DataFrame
 

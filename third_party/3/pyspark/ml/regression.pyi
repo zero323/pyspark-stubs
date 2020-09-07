@@ -16,27 +16,44 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.ml.regression (Python 3)
-
 from typing import Any, List, Optional, Type
-from pyspark.ml._typing import JM, M, P, T
+from pyspark.ml._typing import JM, M, T
 
 import abc
 from pyspark.ml import PredictionModel, Predictor
 from pyspark.ml.base import _PredictorParams
-
-from pyspark.ml.param.shared import *
-from pyspark.ml.linalg import Matrix, Vector
-from pyspark.ml.util import *
+from pyspark.ml.param.shared import (
+    HasAggregationDepth,
+    HasBlockSize,
+    HasElasticNetParam,
+    HasFeaturesCol,
+    HasFitIntercept,
+    HasLabelCol,
+    HasLoss,
+    HasMaxIter,
+    HasPredictionCol,
+    HasRegParam,
+    HasSeed,
+    HasSolver,
+    HasStandardization,
+    HasStepSize,
+    HasTol,
+    HasVarianceCol,
+    HasWeightCol,
+)
 from pyspark.ml.tree import (
     _DecisionTreeModel,
     _DecisionTreeParams,
-    _TreeEnsembleModel,
-    _TreeEnsembleParams,
-    _RandomForestParams,
     _GBTParams,
-    _HasVarianceImpurity,
+    _RandomForestParams,
+    _TreeEnsembleModel,
     _TreeRegressorParams,
+)
+from pyspark.ml.util import (
+    GeneralJavaMLWritable,
+    HasTrainingSummary,
+    JavaMLReadable,
+    JavaMLWritable,
 )
 from pyspark.ml.wrapper import (
     JavaEstimator,
@@ -45,6 +62,9 @@ from pyspark.ml.wrapper import (
     JavaPredictor,
     JavaWrapper,
 )
+
+from pyspark.ml.linalg import Matrix, Vector
+from pyspark.ml.param import Param
 from pyspark.sql.dataframe import DataFrame
 
 class Regressor(Predictor[M], _PredictorParams, metaclass=abc.ABCMeta):

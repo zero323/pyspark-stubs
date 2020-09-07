@@ -21,11 +21,12 @@
 
 from typing import Any, Optional
 
-from pyspark.ml._typing import P
-from pyspark.ml.util import *
+from pyspark.ml.util import JavaMLReadable, JavaMLWritable
 from pyspark.ml.wrapper import JavaEstimator, JavaParams, JavaModel
-from pyspark.ml.param.shared import *
+from pyspark.ml.param.shared import HasPredictionCol
 from pyspark.sql.dataframe import DataFrame
+
+from pyspark.ml.param import Param
 
 class _FPGrowthParams(HasPredictionCol):
     itemsCol: Param[str]

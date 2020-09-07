@@ -16,8 +16,10 @@
 # specific language governing permissions and limitations
 # under the License.
 
+from typing import Any, Callable, Tuple
+from pyspark._typing import F
+
 import threading
-from typing import List, Callable, Any, Tuple
 
 __all__: List[str]
 
@@ -27,7 +29,7 @@ class VersionUtils:
     @staticmethod
     def majorMinorVersion(sparkVersion: str) -> Tuple[int, int]: ...
 
-def fail_on_stopiteration(f: Callable) -> Callable: ...
+def fail_on_stopiteration(f: F) -> F: ...
 def _parse_memory(s: str) -> int: ...
 def _print_missing_jar(
     lib_name: str, pkg_name: str, jar_name: str, spark_version: str
