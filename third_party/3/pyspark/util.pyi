@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from typing import Any, Callable, Tuple, List
+from typing import Any, Tuple, List
 from pyspark._typing import F
 
 import threading
