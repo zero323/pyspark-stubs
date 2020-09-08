@@ -31,7 +31,7 @@ class DataFrameReader(OptionUtils):
     def json(
         self,
         path: Union[str, List[str], RDD[str]],
-        schema: Optional[StructType] = ...,
+        schema: Optional[Union[StructType, str]] = ...,
         primitivesAsString: Optional[Union[bool, str]] = ...,
         prefersDecimal: Optional[Union[bool, str]] = ...,
         allowComments: Optional[Union[bool, str]] = ...,
@@ -64,7 +64,7 @@ class DataFrameReader(OptionUtils):
     def csv(
         self,
         path: PathOrPaths,
-        schema: Optional[StructType] = ...,
+        schema: Optional[Union[StructType, str]] = ...,
         sep: Optional[str] = ...,
         encoding: Optional[str] = ...,
         quote: Optional[str] = ...,
