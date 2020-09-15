@@ -372,6 +372,7 @@ class RandomForestRegressor(
         seed: Optional[int] = ...,
         numTrees: int = ...,
         featureSubsetStrategy: str = ...,
+        leafCol: str = ...,
         minWeightFractionPerNode: float = ...,
         weightCol: Optional[str] = ...,
         bootstrap: Optional[bool] = ...
@@ -394,6 +395,7 @@ class RandomForestRegressor(
         seed: Optional[int] = ...,
         numTrees: int = ...,
         featureSubsetStrategy: str = ...,
+        leafCol: str = ...,
         minWeightFractionPerNode: float = ...,
         weightCol: Optional[str] = ...,
         bootstrap: Optional[bool] = ...
