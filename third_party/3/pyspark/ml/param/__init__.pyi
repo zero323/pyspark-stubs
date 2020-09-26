@@ -16,11 +16,9 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.ml.param (Python 3)
-
 import abc
 from typing import overload
-from typing import Any, Callable, Generic, List, Optional, Type
+from typing import Any, Callable, Generic, List, Optional
 from pyspark.ml._typing import T
 import pyspark.ml._typing
 
@@ -66,8 +64,7 @@ class TypeConverters:
     @staticmethod
     def toBoolean(value: Any) -> bool: ...
 
-class Params(pyspark.ml.util.Identifiable):
-    __metaclass__: Type[abc.ABCMeta]
+class Params(pyspark.ml.util.Identifiable, metaclass=abc.ABCMeta):
     def __init__(self) -> None: ...
     @property
     def params(self) -> List[Param]: ...

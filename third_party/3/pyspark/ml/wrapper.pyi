@@ -16,10 +16,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.ml.wrapper (Python 3)
-
 import abc
-from typing import Any, Optional, Type
+from typing import Any, Optional
 from pyspark.ml._typing import P, T, JM, ParamMap
 
 from pyspark.ml import Estimator, Predictor, PredictionModel, Transformer, Model
@@ -30,25 +28,19 @@ class JavaWrapper:
     def __init__(self, java_obj: Optional[Any] = ...) -> None: ...
     def __del__(self) -> None: ...
 
-class JavaParams(JavaWrapper, Params):
-    __metaclass__: Type[abc.ABCMeta]
+class JavaParams(JavaWrapper, Params, metaclass=abc.ABCMeta):
     def copy(self: P, extra: Optional[ParamMap] = ...) -> P: ...
     def clear(self, param: Param) -> None: ...
 
-class JavaEstimator(JavaParams, Estimator[JM], metaclass=abc.ABCMeta):
-    __metaclass__: Type[abc.ABCMeta]
+class JavaEstimator(JavaParams, Estimator[JM], metaclass=abc.ABCMeta): ...
+class JavaTransformer(JavaParams, Transformer, metaclass=abc.ABCMeta): ...
 
-class JavaTransformer(JavaParams, Transformer):
-    __metaclass__: Type[abc.ABCMeta]
-
-class JavaModel(JavaTransformer, Model):
-    __metaclass__: Type[abc.ABCMeta]
+class JavaModel(JavaTransformer, Model, metaclass=abc.ABCMeta):
     def __init__(self, java_model: Optional[Any] = ...) -> None: ...
 
 class JavaPredictor(
     Predictor[JM], JavaEstimator, _PredictorParams, metaclass=abc.ABCMeta
-):
-    __metaclass__: Type[abc.ABCMeta]
+): ...
 
 class JavaPredictionModel(PredictionModel[T], JavaModel, _PredictorParams):
     @property

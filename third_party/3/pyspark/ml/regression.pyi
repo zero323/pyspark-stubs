@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from typing import Any, List, Optional, Type
+from typing import Any, List, Optional
 from pyspark.ml._typing import JM, M, T
 
 import abc
@@ -67,17 +67,12 @@ from pyspark.ml.linalg import Matrix, Vector
 from pyspark.ml.param import Param
 from pyspark.sql.dataframe import DataFrame
 
-class Regressor(Predictor[M], _PredictorParams, metaclass=abc.ABCMeta):
-    __metaclass__: Type[abc.ABCMeta]
-
-class RegressionModel(PredictionModel[T], _PredictorParams, metaclass=abc.ABCMeta):
-    __metaclass__: Type[abc.ABCMeta]
-
-class _JavaRegressor(Regressor, JavaPredictor[JM], metaclass=abc.ABCMeta):
-    __metaclass__: Type[abc.ABCMeta]
-
-class _JavaRegressionModel(RegressionModel, JavaPredictionModel[T]):
-    __metaclass__: Type[abc.ABCMeta]
+class Regressor(Predictor[M], _PredictorParams, metaclass=abc.ABCMeta): ...
+class RegressionModel(PredictionModel[T], _PredictorParams, metaclass=abc.ABCMeta): ...
+class _JavaRegressor(Regressor, JavaPredictor[JM], metaclass=abc.ABCMeta): ...
+class _JavaRegressionModel(
+    RegressionModel, JavaPredictionModel[T], metaclass=abc.ABCMeta
+): ...
 
 class _LinearRegressionParams(
     _PredictorParams,
@@ -167,8 +162,6 @@ class LinearRegressionModel(
     def intercept(self) -> float: ...
     @property
     def summary(self) -> LinearRegressionTrainingSummary: ...
-    @property
-    def hasSummary(self) -> bool: ...
     def evaluate(self, dataset: DataFrame) -> LinearRegressionSummary: ...
 
 class LinearRegressionSummary(JavaWrapper):
@@ -372,6 +365,7 @@ class RandomForestRegressor(
         seed: Optional[int] = ...,
         numTrees: int = ...,
         featureSubsetStrategy: str = ...,
+        leafCol: str = ...,
         minWeightFractionPerNode: float = ...,
         weightCol: Optional[str] = ...,
         bootstrap: Optional[bool] = ...
@@ -394,6 +388,7 @@ class RandomForestRegressor(
         seed: Optional[int] = ...,
         numTrees: int = ...,
         featureSubsetStrategy: str = ...,
+        leafCol: str = ...,
         minWeightFractionPerNode: float = ...,
         weightCol: Optional[str] = ...,
         bootstrap: Optional[bool] = ...
@@ -700,8 +695,6 @@ class GeneralizedLinearRegressionModel(
     def intercept(self) -> float: ...
     @property
     def summary(self) -> GeneralizedLinearRegressionTrainingSummary: ...
-    @property
-    def hasSummary(self) -> bool: ...
     def evaluate(self, dataset: DataFrame) -> GeneralizedLinearRegressionSummary: ...
 
 class GeneralizedLinearRegressionSummary(JavaWrapper):

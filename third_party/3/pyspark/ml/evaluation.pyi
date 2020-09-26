@@ -16,11 +16,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-# Stubs for pyspark.ml.evaluation (Python 3.5)
-#
-
 import abc
-from typing import Optional, Type
+from typing import Optional
 from pyspark.ml._typing import (
     ParamMap,
     BinaryClassificationEvaluatorMetricType,
@@ -43,13 +40,11 @@ from pyspark.ml.param.shared import (
 )
 from pyspark.ml.util import JavaMLReadable, JavaMLWritable
 
-class Evaluator(Params):
-    __metaclass__: Type[abc.ABCMeta]
+class Evaluator(Params, metaclass=abc.ABCMeta):
     def evaluate(self, dataset, params: Optional[ParamMap] = ...) -> float: ...
     def isLargerBetter(self) -> bool: ...
 
-class JavaEvaluator(JavaParams, Evaluator):
-    __metaclass__: Type[abc.ABCMeta]
+class JavaEvaluator(JavaParams, Evaluator, metaclass=abc.ABCMeta):
     def isLargerBetter(self) -> bool: ...
 
 class BinaryClassificationEvaluator(
