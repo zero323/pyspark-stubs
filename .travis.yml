@@ -9,7 +9,6 @@ before_install:
 - pip install -r requirements-tests-py3.txt
 before_script:
 - git clone --depth 1 --branch $SPARK_BRANCH https://github.com/apache/spark.git spark-source
-- find $PWD/test-data/patches/ -name '*.patch' -exec git -C spark-source apply '{}' \+
 install:
 - pip install .
 script:
