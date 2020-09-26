@@ -16,6 +16,16 @@ list <https://github.com/python/typeshed/graphs/contributors>`__ and
 `license <https://github.com/python/typeshed/blob/master/LICENSE>`__ for
 details.
 
+Important
+----------
+
+This project `has been merged <https://github.com/apache/spark/commit/31a16fbb405a19dc3eb732347e0e1f873b16971d#diff-23eeeb4347bdd26bfc6b7ee9a3b755dd>`_  with the main Apache Spark repository (`SPARK-32714 <https://issues.apache.org/jira/browse/SPARK-32714>`_). All further development for Spark 3.1 and onwards will be continued there.
+
+For Spark 2.4 and 3.0, development of this package will be continued, until their official deprecation.
+
+- If your problem is specific to Spark 2.3 and 3.0 feel free to create an issue or open pull requests here.
+- Otherwise, please check `the official Spark JIRA <https://issues.apache.org/jira/projects/SPARK/issues/>`_ and `contributing guidelines <https://spark.apache.org/contributing.html>`_. If you create a JIRA ticket or Spark PR related to type hints, please ping me with `[~zero323] <https://issues.apache.org/jira/secure/ViewProfile.jspa?name=zero323>`_ or `@zero323 <https://github.com/zero323>`_ respectively. Thanks in advance.
+
 Motivation
 ----------
 
