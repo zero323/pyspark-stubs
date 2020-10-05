@@ -64,7 +64,7 @@ Moreover:
 
 Please check usage before proceeding.
 
-The package is available on `PYPI <https://pypi.org/project/pyspark-stubs/>`__:
+The package is available on `PyPI <https://pypi.org/project/pyspark-stubs/>`__:
 
 .. code:: bash
 
