@@ -33,11 +33,24 @@ parser.add_argument('filter', type=str, nargs='*', help="Include pattern (defaul
 
 
 def log(args, *varargs):
+    """
+    Log a message at the end of arguments.
+
+    Args:
+        varargs: (todo): write your description
+    """
     if args.verbose >= 2:
         print(*varargs)
 
 
 def match(fn, args, blacklist):
+    """
+    Return true if arg matches pattern
+
+    Args:
+        fn: (todo): write your description
+        blacklist: (list): write your description
+    """
     if blacklist.match(fn):
         log(args, fn, 'exluded by blacklist')
         return False
@@ -62,6 +75,13 @@ def match(fn, args, blacklist):
 
 
 def libpath(major, minor):
+    """
+    Return the path to the library.
+
+    Args:
+        major: (int): write your description
+        minor: (int): write your description
+    """
     versions = ['%d.%d' % (major, minor)
                 for minor in reversed(range(minor + 1))]
     versions.append(str(major))
@@ -76,6 +96,11 @@ def libpath(major, minor):
 
 
 def main():
+    """
+    Main function.
+
+    Args:
+    """
     args = parser.parse_args()
 
     with open(os.path.join(os.path.dirname(__file__), "mypy_blacklist.txt")) as f:

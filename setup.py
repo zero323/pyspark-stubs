@@ -18,6 +18,13 @@ src_path = os.path.join("third_party", "3")
 
 
 def list_packages(src_path=src_path):
+    """
+    Return a list of src_path.
+
+    Args:
+        src_path: (str): write your description
+        src_path: (str): write your description
+    """
     for root, _, _ in os.walk(os.path.join(src_path, "pyspark")):
         yield ".".join(os.path.relpath(root, src_path).split(os.path.sep))
 
