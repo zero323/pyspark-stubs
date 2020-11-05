@@ -9,6 +9,12 @@ pytest_plugins = [
 
 
 def pytest_configure(config):
+    """
+    Configure pytestpy. py.
+
+    Args:
+        config: (dict): write your description
+    """
     mypy_source_root = os.path.dirname(os.path.abspath(__file__))
     if os.getcwd() != mypy_source_root:
         os.chdir(mypy_source_root)
