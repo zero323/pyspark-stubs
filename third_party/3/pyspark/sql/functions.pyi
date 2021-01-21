@@ -274,7 +274,8 @@ def udf(
 ) -> Callable[[Callable[..., Any]], Callable[..., Column]]: ...
 @overload
 def udf(
-    *, returnType: DataTypeOrString = ...,
+    *,
+    returnType: DataTypeOrString = ...,
 ) -> Callable[[Callable[..., Any]], Callable[..., Column]]: ...
 
 class PandasUDFType:
