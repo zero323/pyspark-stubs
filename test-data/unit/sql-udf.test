@@ -61,18 +61,26 @@ pandas_udf(lambda *xs: 42, "str", PandasUDFType.GROUPED_AGG)
 
 [case legacyUDF]
 from pyspark.sql.functions import udf
+from pyspark.sql.types import IntegerType
 
 udf(lambda x: x, "string")
+
+udf(lambda x: x)
 
 @udf("string")
 def f(x):
     return x
 
 @udf(returnType="string")
-def f(x):
+def g(x):
     return x
 
 @udf(returnType=IntegerType())
-def f(x):
+def h(x):
     return x
+
+@udf
+def i(x):
+    return x
+
 [out]
