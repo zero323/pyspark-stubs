@@ -296,7 +296,7 @@ def pandas_udf(
 def pandas_udf(
     *,
     returnType: Union[AtomicDataTypeOrString, ArrayType],
-    functionType: PandasScalarUDFType
+    functionType: PandasScalarUDFType,
 ) -> Callable[[PandasScalarFunction], UserDefinedFunctionLike]: ...
 @overload
 def pandas_udf(
@@ -330,11 +330,11 @@ def pandas_udf(
 def pandas_udf(
     *,
     returnType: Union[AtomicDataTypeOrString, ArrayType],
-    functionType: PandasGroupedAggUDFType
+    functionType: PandasGroupedAggUDFType,
 ) -> Callable[[PandasGroupedAggFunction], UserDefinedFunctionLike]: ...
 @overload
 def pandas_udf(
     f: Union[AtomicDataTypeOrString, ArrayType],
     *,
-    functionType: PandasGroupedAggUDFType
+    functionType: PandasGroupedAggUDFType,
 ) -> Callable[[PandasGroupedAggFunction], UserDefinedFunctionLike]: ...
