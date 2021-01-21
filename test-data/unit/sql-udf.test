@@ -106,11 +106,26 @@ spark.range(1).mapInPandas(f, "id long").show()
 
 [case legacyUDF]
 from pyspark.sql.functions import udf
+from pyspark.sql.types import IntegerType
 
 udf(lambda x: x, "string")
 
+udf(lambda x: x)
+
 @udf("string")
-def f(x: str) -> str:
+def f(x):
+    return x
+
+@udf(returnType="string")
+def g(x):
+    return x
+
+@udf(returnType=IntegerType())
+def h(x):
+    return x
+
+@udf
+def i(x):
     return x
 [out]
 
