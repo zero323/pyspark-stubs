@@ -146,7 +146,7 @@ Footnotes
 .. [#f11] See `Jedi editor plugins list <https://jedi.readthedocs.io/en/latest/docs/usage.html#editor-plugins>`__.
 
 
-.. |Build Status| image:: https://travis-ci.org/zero323/pyspark-stubs.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/zero323/pyspark-stubs.svg?branch=branch-3.0
    :target: https://travis-ci.org/zero323/pyspark-stubs
 .. |PyPI version| image:: https://img.shields.io/pypi/v/pyspark-stubs.svg
    :target: https://pypi.org/project/pyspark-stubs/
