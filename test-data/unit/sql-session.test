@@ -76,3 +76,16 @@ spark.createDataFrame(data, schema, samplingRatio=0.1)  # E: No overload variant
                                                         # N:     def [RowLike in (List[Any], Tuple[Any, ...], Row)] createDataFrame(self, data: Union[RDD[RowLike], Iterable[RowLike]], schema: Union[List[str], Tuple[str, ...]] = ..., verifySchema: bool = ...) -> DataFrame \
                                                         # N:     <4 more similar overloads not shown, out of 6 total overloads>
 [out]
+
+[case createDataFrameFromEmptyRdd]
+
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType
+
+spark = SparkSession.builder.getOrCreate()
+
+spark.createDataFrame(
+    spark.sparkContext.emptyRDD(),
+    schema=StructType(),
+)
+[out]

@@ -17,6 +17,9 @@ T = TypeVar("T")
 U = TypeVar("U")
 
 class SparkContext:
+    master: str
+    appName: str
+    sparkHome: str
     PACKAGE_EXTENSIONS: Iterable[str]
     def __init__(
         self,
@@ -53,7 +56,7 @@ class SparkContext:
     @property
     def defaultMinPartitions(self) -> int: ...
     def stop(self) -> None: ...
-    def emptyRDD(self) -> RDD[None]: ...
+    def emptyRDD(self) -> RDD[Any]: ...
     def range(
         self,
         start: int,

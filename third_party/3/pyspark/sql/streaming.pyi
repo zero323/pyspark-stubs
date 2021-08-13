@@ -4,7 +4,7 @@
 from typing import overload
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from pyspark.sql._typing import SupportsProcess, ReadWriterOptionType
+from pyspark.sql._typing import SupportsProcess, OptionalPrimitiveType
 from pyspark.sql.context import SQLContext
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.readwriter import OptionUtils
@@ -47,19 +47,19 @@ class DataStreamReader(OptionUtils):
     def __init__(self, spark: SQLContext) -> None: ...
     def format(self, source: str) -> DataStreamReader: ...
     def schema(self, schema: Union[StructType, str]) -> DataStreamReader: ...
-    def option(self, key: str, value: ReadWriterOptionType) -> DataStreamReader: ...
-    def options(self, **options: ReadWriterOptionType) -> DataStreamReader: ...
+    def option(self, key: str, value: OptionalPrimitiveType) -> DataStreamReader: ...
+    def options(self, **options: OptionalPrimitiveType) -> DataStreamReader: ...
     def load(
         self,
         path: Optional[str] = ...,
         format: Optional[str] = ...,
         schema: Optional[StructType] = ...,
-        **options: ReadWriterOptionType
+        **options: OptionalPrimitiveType
     ) -> DataFrame: ...
     def json(
         self,
         path: str,
-        schema: Optional[str] = ...,
+        schema: Optional[Union[StructType, str]] = ...,
         primitivesAsString: Optional[Union[bool, str]] = ...,
         prefersDecimal: Optional[Union[bool, str]] = ...,
         allowComments: Optional[Union[bool, str]] = ...,
@@ -83,7 +83,7 @@ class DataStreamReader(OptionUtils):
     def csv(
         self,
         path: str,
-        schema: Optional[StructType] = ...,
+        schema: Optional[Union[StructType, str]] = ...,
         sep: Optional[str] = ...,
         encoding: Optional[str] = ...,
         quote: Optional[str] = ...,
@@ -113,8 +113,8 @@ class DataStreamWriter:
     def __init__(self, df: DataFrame) -> None: ...
     def outputMode(self, outputMode: str) -> DataStreamWriter: ...
     def format(self, source: str) -> DataStreamWriter: ...
-    def option(self, key: str, value: ReadWriterOptionType) -> DataStreamWriter: ...
-    def options(self, **options: ReadWriterOptionType) -> DataStreamWriter: ...
+    def option(self, key: str, value: OptionalPrimitiveType) -> DataStreamWriter: ...
+    def options(self, **options: OptionalPrimitiveType) -> DataStreamWriter: ...
     @overload
     def partitionBy(self, *cols: str) -> DataStreamWriter: ...
     @overload
@@ -133,7 +133,7 @@ class DataStreamWriter:
         outputMode: Optional[str] = ...,
         partitionBy: Optional[Union[str, List[str]]] = ...,
         queryName: Optional[str] = ...,
-        **options: ReadWriterOptionType
+        **options: OptionalPrimitiveType
     ) -> StreamingQuery: ...
     @overload
     def foreach(self, f: Callable[[Row], None]) -> DataStreamWriter: ...
