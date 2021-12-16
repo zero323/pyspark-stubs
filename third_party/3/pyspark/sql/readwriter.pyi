@@ -2,13 +2,14 @@
 #
 
 from typing import overload
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 from pyspark.sql._typing import OptionalPrimitiveType
 from pyspark.sql.dataframe import DataFrame
 from pyspark.rdd import RDD
+from pyspark.sql.column import Column
 from pyspark.sql.context import SQLContext
-from pyspark.sql.types import *
+from pyspark.sql.types import StructType
 
 PathOrPaths = Union[str, List[str]]
 TupleOrListOfString = Union[List[str], Tuple[str, ...]]
@@ -25,7 +26,7 @@ class DataFrameReader(OptionUtils):
         self,
         path: Optional[PathOrPaths] = ...,
         format: Optional[str] = ...,
-        schema: Optional[StructType] = ...,
+        schema: Optional[Union[StructType, str]] = ...,
         **options: OptionalPrimitiveType
     ) -> DataFrame: ...
     def json(
@@ -109,8 +110,8 @@ class DataFrameReader(OptionUtils):
         url: str,
         table: str,
         column: str,
-        lowerBound: int,
-        upperBound: int,
+        lowerBound: Union[int, str],
+        upperBound: Union[int, str],
         numPartitions: int,
         *,
         properties: Optional[Dict[str, str]] = ...
@@ -150,7 +151,7 @@ class DataFrameWriter(OptionUtils):
         path: Optional[str] = ...,
         format: Optional[str] = ...,
         mode: Optional[str] = ...,
-        partitionBy: Optional[List[str]] = ...,
+        partitionBy: Optional[Union[str, List[str]]] = ...,
         **options: OptionalPrimitiveType
     ) -> None: ...
     def insertInto(self, tableName: str, overwrite: Optional[bool] = ...) -> None: ...
@@ -159,7 +160,7 @@ class DataFrameWriter(OptionUtils):
         name: str,
         format: Optional[str] = ...,
         mode: Optional[str] = ...,
-        partitionBy: Optional[List[str]] = ...,
+        partitionBy: Optional[Union[str, List[str]]] = ...,
         **options: OptionalPrimitiveType
     ) -> None: ...
     def json(
@@ -171,13 +172,13 @@ class DataFrameWriter(OptionUtils):
         timestampFormat: Optional[str] = ...,
         lineSep: Optional[str] = ...,
         encoding: Optional[str] = ...,
-        ignoreNullFields: Optional[bool] = ...,
+        ignoreNullFields: Optional[Union[bool, str]] = ...,
     ) -> None: ...
     def parquet(
         self,
         path: str,
         mode: Optional[str] = ...,
-        partitionBy: Optional[List[str]] = ...,
+        partitionBy: Optional[Union[str, List[str]]] = ...,
         compression: Optional[str] = ...,
     ) -> None: ...
     def text(
@@ -208,7 +209,7 @@ class DataFrameWriter(OptionUtils):
         self,
         path: str,
         mode: Optional[str] = ...,
-        partitionBy: Optional[List[str]] = ...,
+        partitionBy: Optional[Union[str, List[str]]] = ...,
         compression: Optional[str] = ...,
     ) -> None: ...
     def jdbc(
