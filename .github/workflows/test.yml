@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, "3.10"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install -U pip setuptools wheel
+          pip install -r requirements-tests-py3.txt
+      - name: Test annotations
+        run: python ./tests/mypy_test.py -p 3.6 3.7 3.8 3.9 3.10
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        pip install -U black
+    - name: Run linters
+      run: |
+        black --check ./third_party/3/pyspark
