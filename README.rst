@@ -276,8 +276,8 @@ Apache Spark, Spark, PySpark, Apache, and the Spark logo are `trademarks <https:
 Apache Software Foundation <http://www.apache.org/>`__. This project is not owned, endorsed, or
 sponsored by The Apache Software Foundation.
 
-.. |Build Status| image:: https://travis-ci.org/zero323/pyspark-stubs.svg?branch=master
-   :target: https://travis-ci.org/zero323/pyspark-stubs
+.. |Build Status| image:: https://github.com/zero323/pyspark-stubs/actions/workflows/test.yml/badge.svg?branch=branch-2.4
+   :target: https://github.com/zero323/pyspark-stubs/actions/workflows/test.yml
 .. |PyPI version| image:: https://img.shields.io/pypi/v/pyspark-stubs.svg
    :target: https://pypi.org/project/pyspark-stubs/
 .. |Conda Forge version| image:: https://img.shields.io/conda/vn/conda-forge/pyspark-stubs.svg
